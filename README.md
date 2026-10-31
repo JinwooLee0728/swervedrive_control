@@ -112,6 +112,48 @@ the ODrive bridge, bridge clamps vs controller limits, module-name pairing,
 agent ownership (every module owned by exactly one robot), the sim mirror, and
 warns on an implausible `wheel_radius`.
 
+## Build
+
+This workspace is **self-contained** — it needs no other checkout, so a robot
+NUC only has to clone this one.
+
+```bash
+sudo apt install -y ros-$ROS_DISTRO-dynamixel-sdk can-utils \
+                    python3-numpy python3-pyqtgraph python3-yaml
+cd ~/swdr_ws
+colcon build --symlink-install
+source install/setup.bash
+```
+
+| package | role |
+|---|---|
+| `swerve_cooptrans_bridge` | controller adapter, LiDAR adapter, config validator, simulation, GUI, all launch files |
+| `swerve_test` | Dynamixel steering node |
+| `swerve_odrive_bridge` | wheel speed → ODrive, coupling compensation, auto-arm |
+| `ros_odrive` | vendored ODrive CAN driver (upstream `odriverobotics/ros_odrive`) |
+| `keyboard_to_swerve` | single-robot bench teleop |
+| `controller` | the control law — **vendored** from `cooptrans_ws` |
+| `trajectory_generation` | reference + eq. 13 progression regulator — **vendored** |
+| `cooptrans_sim` | kinematic plant — **vendored** |
+
+The last three originate in `cooptrans_ws` and carry swerve-specific changes
+(`direct_steering`, the servo steering model, fake encoders). These copies are
+what the swerve launches use; edits here do not propagate to `cooptrans_ws`,
+or the other way round.
+
+> **Source only this workspace for swerve work.** `cooptrans_ws` provides
+> packages by the same three names, so sourcing both means whichever was
+> sourced *last* silently wins. `hardware_check` runs first in every launch and
+> prints where each package actually resolved, marking any that came from
+> elsewhere with `!!` — so if you ever wonder which controller is running, read
+> the top of the launch output:
+>
+> ```
+> package origins:
+>    controller              .../swdr_ws/install/controller
+> !! cooptrans_sim           .../cooptrans_ws/install/cooptrans_sim
+> ```
+
 ## Calibration (once, after bolting)
 
 `cooptrans_bringup`'s `init.launch.py` is **obsolete here** — it spins each
@@ -122,6 +164,7 @@ robot to calibrate a *pinned* attachment. Do not run it. Instead:
    `hardware_check` verifies (1) equals mount + R(α)·offset.
 3. Per boot: hand-align both wheels along chassis +x before launching
    (`assume_forward_on_startup` snapshots that as module zero).
+
 
 ## Run
 

@@ -4,9 +4,9 @@
 
 #include <string.h>
 
-#include "odrive_can/msg/detail/controller_status__functions.h"
-#include "odrive_can/msg/detail/controller_status__type_support.h"
 #include "odrive_can/msg/detail/controller_status__struct.h"
+#include "odrive_can/msg/detail/controller_status__type_support.h"
+#include "odrive_can/msg/detail/controller_status__functions.h"
 #include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus

@@ -1,0 +1,713 @@
+[0.049s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.049s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=28, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x752aaa14f080>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x752aaaf03620>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x752aaaf03620>>)
+[0.067s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.067s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.067s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.068s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.068s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.068s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.068s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws'
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.068s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.080s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.080s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.080s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.080s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.080s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['ignore', 'ignore_ament_install']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'ignore'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'ignore_ament_install'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['colcon_pkg']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'colcon_pkg'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['colcon_meta']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'colcon_meta'
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['ros']
+[0.081s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'ros'
+[0.082s] DEBUG:colcon.colcon_core.package_identification:Package 'src/controller' with type 'ros.ament_cmake' and name 'controller'
+[0.082s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extensions ['ignore', 'ignore_ament_install']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extension 'ignore'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extension 'ignore_ament_install'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extensions ['colcon_pkg']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extension 'colcon_pkg'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extensions ['colcon_meta']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extension 'colcon_meta'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extensions ['ros']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/cooptrans_sim) by extension 'ros'
+[0.083s] DEBUG:colcon.colcon_core.package_identification:Package 'src/cooptrans_sim' with type 'ros.ament_python' and name 'cooptrans_sim'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extensions ['ignore', 'ignore_ament_install']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extension 'ignore'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extension 'ignore_ament_install'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extensions ['colcon_pkg']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extension 'colcon_pkg'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extensions ['colcon_meta']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extension 'colcon_meta'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extensions ['ros']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/keyboard_to_swerve) by extension 'ros'
+[0.083s] DEBUG:colcon.colcon_core.package_identification:Package 'src/keyboard_to_swerve' with type 'ros.ament_python' and name 'keyboard_to_swerve'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extensions ['ignore', 'ignore_ament_install']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'ignore'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'ignore_ament_install'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extensions ['colcon_pkg']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'colcon_pkg'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extensions ['colcon_meta']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'colcon_meta'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extensions ['ros']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'ros'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extensions ['cmake', 'python']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'cmake'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'python'
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extensions ['python_setup_py']
+[0.083s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive) by extension 'python_setup_py'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extensions ['ignore', 'ignore_ament_install']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'ignore'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'ignore_ament_install'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extensions ['colcon_pkg']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'colcon_pkg'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extensions ['colcon_meta']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'colcon_meta'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extensions ['ros']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'ros'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extensions ['cmake', 'python']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'cmake'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'python'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extensions ['python_setup_py']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base) by extension 'python_setup_py'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extensions ['ignore', 'ignore_ament_install']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'ignore'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'ignore_ament_install'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extensions ['colcon_pkg']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'colcon_pkg'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extensions ['colcon_meta']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'colcon_meta'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extensions ['ros']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'ros'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extensions ['cmake', 'python']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'cmake'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'python'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extensions ['python_setup_py']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/include) by extension 'python_setup_py'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extensions ['ignore', 'ignore_ament_install']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'ignore'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'ignore_ament_install'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extensions ['colcon_pkg']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'colcon_pkg'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extensions ['colcon_meta']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'colcon_meta'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extensions ['ros']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'ros'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extensions ['cmake', 'python']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'cmake'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'python'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extensions ['python_setup_py']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_base/src) by extension 'python_setup_py'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extensions ['ignore', 'ignore_ament_install']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extension 'ignore'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extension 'ignore_ament_install'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extensions ['colcon_pkg']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extension 'colcon_pkg'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extensions ['colcon_meta']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extension 'colcon_meta'
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extensions ['ros']
+[0.084s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_botwheel_explorer) by extension 'ros'
+[0.085s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ros_odrive/odrive_botwheel_explorer' with type 'ros.ament_cmake' and name 'odrive_botwheel_explorer'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extensions ['ignore', 'ignore_ament_install']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extension 'ignore'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extension 'ignore_ament_install'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extensions ['colcon_pkg']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extension 'colcon_pkg'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extensions ['colcon_meta']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extension 'colcon_meta'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extensions ['ros']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_node) by extension 'ros'
+[0.085s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ros_odrive/odrive_node' with type 'ros.ament_cmake' and name 'odrive_can'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extensions ['ignore', 'ignore_ament_install']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extension 'ignore'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extension 'ignore_ament_install'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extensions ['colcon_pkg']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extension 'colcon_pkg'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extensions ['colcon_meta']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extension 'colcon_meta'
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extensions ['ros']
+[0.085s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros_odrive/odrive_ros2_control) by extension 'ros'
+[0.086s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ros_odrive/odrive_ros2_control' with type 'ros.ament_cmake' and name 'odrive_ros2_control'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extensions ['ignore', 'ignore_ament_install']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extension 'ignore'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extension 'ignore_ament_install'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extensions ['colcon_pkg']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extension 'colcon_pkg'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extensions ['colcon_meta']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extension 'colcon_meta'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extensions ['ros']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_cooptrans_bridge) by extension 'ros'
+[0.086s] DEBUG:colcon.colcon_core.package_identification:Package 'src/swerve_cooptrans_bridge' with type 'ros.ament_python' and name 'swerve_cooptrans_bridge'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extensions ['ignore', 'ignore_ament_install']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extension 'ignore'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extension 'ignore_ament_install'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extensions ['colcon_pkg']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extension 'colcon_pkg'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extensions ['colcon_meta']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extension 'colcon_meta'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extensions ['ros']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_odrive_bridge) by extension 'ros'
+[0.086s] DEBUG:colcon.colcon_core.package_identification:Package 'src/swerve_odrive_bridge' with type 'ros.ament_cmake' and name 'swerve_odrive_bridge'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extensions ['ignore', 'ignore_ament_install']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extension 'ignore'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extension 'ignore_ament_install'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extensions ['colcon_pkg']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extension 'colcon_pkg'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extensions ['colcon_meta']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extension 'colcon_meta'
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extensions ['ros']
+[0.086s] Level 1:colcon.colcon_core.package_identification:_identify(src/swerve_test) by extension 'ros'
+[0.087s] DEBUG:colcon.colcon_core.package_identification:Package 'src/swerve_test' with type 'ros.ament_cmake' and name 'swerve_test'
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extensions ['ignore', 'ignore_ament_install']
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extension 'ignore'
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extension 'ignore_ament_install'
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extensions ['colcon_pkg']
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extension 'colcon_pkg'
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extensions ['colcon_meta']
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extension 'colcon_meta'
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extensions ['ros']
+[0.087s] Level 1:colcon.colcon_core.package_identification:_identify(src/trajectory_generation) by extension 'ros'
+[0.087s] DEBUG:colcon.colcon_core.package_identification:Package 'src/trajectory_generation' with type 'ros.ament_cmake' and name 'trajectory_generation'
+[0.087s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.087s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.087s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.087s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.087s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_target' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.097s] DEBUG:colcon.colcon_core.verb:Building package 'controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/controller', 'symlink_install': True, 'test_result_base': None}
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'cmake_target' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'cmake_clean_cache' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'cmake_clean_first' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'cmake_force_configure' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'ament_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'catkin_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'cooptrans_sim' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.097s] DEBUG:colcon.colcon_core.verb:Building package 'cooptrans_sim' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/cooptrans_sim', 'symlink_install': True, 'test_result_base': None}
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'cmake_target' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'cmake_clean_cache' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'cmake_clean_first' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'cmake_force_configure' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'ament_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'catkin_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'keyboard_to_swerve' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.097s] DEBUG:colcon.colcon_core.verb:Building package 'keyboard_to_swerve' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/keyboard_to_swerve', 'symlink_install': True, 'test_result_base': None}
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'cmake_target' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'cmake_clean_cache' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'cmake_clean_first' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'cmake_force_configure' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'ament_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'catkin_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_can' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.097s] DEBUG:colcon.colcon_core.verb:Building package 'odrive_can' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_node', 'symlink_install': True, 'test_result_base': None}
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'cmake_target' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'cmake_clean_cache' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'cmake_clean_first' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'cmake_force_configure' from command line to 'False'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'ament_cmake_args' from command line to 'None'
+[0.097s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'catkin_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_ros2_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.098s] DEBUG:colcon.colcon_core.verb:Building package 'odrive_ros2_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control', 'symlink_install': True, 'test_result_base': None}
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'cmake_target' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'cmake_clean_cache' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'cmake_clean_first' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'cmake_force_configure' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'ament_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'catkin_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_cooptrans_bridge' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.098s] DEBUG:colcon.colcon_core.verb:Building package 'swerve_cooptrans_bridge' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_cooptrans_bridge', 'symlink_install': True, 'test_result_base': None}
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'cmake_target' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'cmake_clean_cache' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'cmake_clean_first' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'cmake_force_configure' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'ament_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'catkin_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_test' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.098s] DEBUG:colcon.colcon_core.verb:Building package 'swerve_test' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_test', 'symlink_install': True, 'test_result_base': None}
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'cmake_target' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'cmake_clean_cache' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'cmake_clean_first' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'cmake_force_configure' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'ament_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'catkin_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'trajectory_generation' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.098s] DEBUG:colcon.colcon_core.verb:Building package 'trajectory_generation' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/trajectory_generation', 'symlink_install': True, 'test_result_base': None}
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'cmake_target' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'cmake_clean_cache' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'cmake_clean_first' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'cmake_force_configure' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'ament_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'catkin_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'odrive_botwheel_explorer' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.098s] DEBUG:colcon.colcon_core.verb:Building package 'odrive_botwheel_explorer' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_botwheel_explorer', 'symlink_install': True, 'test_result_base': None}
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'cmake_target' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'cmake_clean_cache' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'cmake_clean_first' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'cmake_force_configure' from command line to 'False'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'ament_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'catkin_cmake_args' from command line to 'None'
+[0.098s] Level 5:colcon.colcon_core.verb:set package 'swerve_odrive_bridge' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.098s] DEBUG:colcon.colcon_core.verb:Building package 'swerve_odrive_bridge' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge', 'merge_install': False, 'path': '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_odrive_bridge', 'symlink_install': True, 'test_result_base': None}
+[0.098s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.099s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.100s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_node' with build type 'ament_cmake'
+[0.100s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_node'
+[0.101s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.101s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.103s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control' with build type 'ament_cmake'
+[0.103s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control'
+[0.103s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.105s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/controller' with build type 'ament_cmake'
+[0.105s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/controller'
+[0.105s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.107s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/cooptrans_sim' with build type 'ament_python'
+[0.107s] Level 1:colcon.colcon_core.shell:create_environment_hook('cooptrans_sim', 'ament_prefix_path')
+[0.107s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/hook/ament_prefix_path.dsv'
+[0.107s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/hook/ament_prefix_path.sh'
+[0.107s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.109s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/keyboard_to_swerve' with build type 'ament_python'
+[0.109s] Level 1:colcon.colcon_core.shell:create_environment_hook('keyboard_to_swerve', 'ament_prefix_path')
+[0.109s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/hook/ament_prefix_path.dsv'
+[0.109s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/hook/ament_prefix_path.sh'
+[0.109s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.111s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_cooptrans_bridge' with build type 'ament_python'
+[0.111s] Level 1:colcon.colcon_core.shell:create_environment_hook('swerve_cooptrans_bridge', 'ament_prefix_path')
+[0.111s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/ament_prefix_path.dsv'
+[0.111s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/ament_prefix_path.sh'
+[0.111s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.113s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_test' with build type 'ament_cmake'
+[0.113s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_test'
+[0.113s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.114s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/trajectory_generation' with build type 'ament_cmake'
+[0.114s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/trajectory_generation'
+[0.114s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.117s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can
+[0.118s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control
+[0.119s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller
+[0.238s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/cooptrans_sim'
+[0.238s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.386s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/keyboard_to_swerve'
+[0.386s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.510s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_cooptrans_bridge'
+[0.510s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.512s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_test -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test
+[0.518s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/trajectory_generation -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation
+[0.864s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller
+[0.864s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller -- -j28 -l28
+[0.875s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge/build --no-deps symlink_data
+[0.945s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/build --no-deps symlink_data
+[0.999s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/build --no-deps symlink_data
+[1.146s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control
+[1.147s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control -- -j28 -l28
+[1.344s] Level 1:colcon.colcon_core.shell:create_environment_hook('cooptrans_sim', 'pythonpath_develop')
+[1.344s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/share/cooptrans_sim/hook/pythonpath_develop.dsv'
+[1.344s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/build --no-deps symlink_data
+[1.344s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/share/cooptrans_sim/hook/pythonpath_develop.sh'
+[1.346s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim' for CMake module files
+[1.346s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim' for CMake config files
+[1.346s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib'
+[1.346s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/bin'
+[1.346s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/pkgconfig/cooptrans_sim.pc'
+[1.346s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/python3.12/site-packages'
+[1.347s] Level 1:colcon.colcon_core.shell:create_environment_hook('cooptrans_sim', 'pythonpath')
+[1.347s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/hook/pythonpath.dsv'
+[1.347s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/hook/pythonpath.sh'
+[1.347s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/bin'
+[1.347s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(cooptrans_sim)
+[1.347s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/package.dsv'
+[1.347s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/package.sh'
+[1.348s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/package.bash'
+[1.348s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim/package.zsh'
+[1.348s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/colcon-core/packages/cooptrans_sim)
+[1.416s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_test -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test
+[1.416s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test -- -j28 -l28
+[1.450s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/trajectory_generation -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation
+[1.451s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation -- -j28 -l28
+[1.639s] Level 1:colcon.colcon_core.shell:create_environment_hook('swerve_cooptrans_bridge', 'pythonpath_develop')
+[1.640s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/pythonpath_develop.dsv'
+[1.640s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/pythonpath_develop.sh'
+[1.640s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_cooptrans_bridge/build --no-deps symlink_data
+[1.641s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge' for CMake module files
+[1.641s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge' for CMake config files
+[1.642s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/lib'
+[1.642s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/bin'
+[1.642s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/lib/pkgconfig/swerve_cooptrans_bridge.pc'
+[1.642s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/lib/python3.12/site-packages'
+[1.642s] Level 1:colcon.colcon_core.shell:create_environment_hook('swerve_cooptrans_bridge', 'pythonpath')
+[1.642s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/pythonpath.dsv'
+[1.643s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/pythonpath.sh'
+[1.643s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/bin'
+[1.643s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(swerve_cooptrans_bridge)
+[1.644s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/package.dsv'
+[1.644s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/package.sh'
+[1.644s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/package.bash'
+[1.645s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/package.zsh'
+[1.645s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_cooptrans_bridge/share/colcon-core/packages/swerve_cooptrans_bridge)
+[1.769s] Level 1:colcon.colcon_core.shell:create_environment_hook('keyboard_to_swerve', 'pythonpath_develop')
+[1.769s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/share/keyboard_to_swerve/hook/pythonpath_develop.dsv'
+[1.769s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/build --no-deps symlink_data
+[1.770s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/share/keyboard_to_swerve/hook/pythonpath_develop.sh'
+[1.770s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve' for CMake module files
+[1.770s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve' for CMake config files
+[1.771s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib'
+[1.771s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/bin'
+[1.771s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/pkgconfig/keyboard_to_swerve.pc'
+[1.771s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/python3.12/site-packages'
+[1.771s] Level 1:colcon.colcon_core.shell:create_environment_hook('keyboard_to_swerve', 'pythonpath')
+[1.771s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/hook/pythonpath.dsv'
+[1.772s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/hook/pythonpath.sh'
+[1.772s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/bin'
+[1.772s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(keyboard_to_swerve)
+[1.772s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/package.dsv'
+[1.773s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/package.sh'
+[1.773s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/package.bash'
+[1.773s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/package.zsh'
+[1.774s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/colcon-core/packages/keyboard_to_swerve)
+[2.542s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can
+[2.542s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can -- -j28 -l28
+[5.255s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control -- -j28 -l28
+[5.265s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control
+[5.442s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(odrive_ros2_control)
+[5.442s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control' for CMake module files
+[5.443s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control
+[5.443s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control' for CMake config files
+[5.443s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_ros2_control', 'cmake_prefix_path')
+[5.443s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/cmake_prefix_path.dsv'
+[5.444s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/cmake_prefix_path.sh'
+[5.444s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib'
+[5.445s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_ros2_control', 'ld_library_path_lib')
+[5.445s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/ld_library_path_lib.dsv'
+[5.445s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/ld_library_path_lib.sh'
+[5.445s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/bin'
+[5.445s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib/pkgconfig/odrive_ros2_control.pc'
+[5.446s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib/python3.12/site-packages'
+[5.446s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/bin'
+[5.446s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.dsv'
+[5.447s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.sh'
+[5.447s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.bash'
+[5.447s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.zsh'
+[5.448s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/colcon-core/packages/odrive_ros2_control)
+[5.448s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(odrive_ros2_control)
+[5.448s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control' for CMake module files
+[5.449s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control' for CMake config files
+[5.449s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_ros2_control', 'cmake_prefix_path')
+[5.449s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/cmake_prefix_path.dsv'
+[5.449s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/cmake_prefix_path.sh'
+[5.450s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib'
+[5.450s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_ros2_control', 'ld_library_path_lib')
+[5.450s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/ld_library_path_lib.dsv'
+[5.450s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/hook/ld_library_path_lib.sh'
+[5.451s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/bin'
+[5.451s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib/pkgconfig/odrive_ros2_control.pc'
+[5.451s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib/python3.12/site-packages'
+[5.451s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/bin'
+[5.452s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.dsv'
+[5.452s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.sh'
+[5.453s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.bash'
+[5.453s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.zsh'
+[5.453s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/colcon-core/packages/odrive_ros2_control)
+[5.454s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_botwheel_explorer' with build type 'ament_cmake'
+[5.454s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_botwheel_explorer'
+[5.454s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.462s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib:${LD_LIBRARY_PATH} /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_botwheel_explorer -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer
+[6.105s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer' returned '0': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib:${LD_LIBRARY_PATH} /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_botwheel_explorer -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer
+[6.105s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer -- -j28 -l28
+[6.144s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer' returned '0': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer -- -j28 -l28
+[6.144s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer
+[6.295s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(odrive_botwheel_explorer)
+[6.295s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer' returned '0': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer
+[6.295s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer' for CMake module files
+[6.296s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer' for CMake config files
+[6.296s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_botwheel_explorer', 'cmake_prefix_path')
+[6.296s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/hook/cmake_prefix_path.dsv'
+[6.296s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/hook/cmake_prefix_path.sh'
+[6.297s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/bin'
+[6.297s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/lib/pkgconfig/odrive_botwheel_explorer.pc'
+[6.297s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/lib/python3.12/site-packages'
+[6.297s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/bin'
+[6.297s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.dsv'
+[6.298s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.sh'
+[6.298s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.bash'
+[6.298s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.zsh'
+[6.298s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/colcon-core/packages/odrive_botwheel_explorer)
+[6.298s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(odrive_botwheel_explorer)
+[6.298s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer' for CMake module files
+[6.299s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer' for CMake config files
+[6.299s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_botwheel_explorer', 'cmake_prefix_path')
+[6.299s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/hook/cmake_prefix_path.dsv'
+[6.299s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/hook/cmake_prefix_path.sh'
+[6.299s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/bin'
+[6.299s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/lib/pkgconfig/odrive_botwheel_explorer.pc'
+[6.299s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/lib/python3.12/site-packages'
+[6.300s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/bin'
+[6.300s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.dsv'
+[6.300s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.sh'
+[6.300s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.bash'
+[6.300s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/odrive_botwheel_explorer/package.zsh'
+[6.301s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_botwheel_explorer/share/colcon-core/packages/odrive_botwheel_explorer)
+[9.995s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test -- -j28 -l28
+[9.996s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test
+[10.133s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(swerve_test)
+[10.133s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test' for CMake module files
+[10.134s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test
+[10.134s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test' for CMake config files
+[10.134s] Level 1:colcon.colcon_core.shell:create_environment_hook('swerve_test', 'cmake_prefix_path')
+[10.134s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/hook/cmake_prefix_path.dsv'
+[10.134s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/hook/cmake_prefix_path.sh'
+[10.135s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib'
+[10.135s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/bin'
+[10.135s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/pkgconfig/swerve_test.pc'
+[10.135s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/python3.12/site-packages'
+[10.135s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/bin'
+[10.135s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.dsv'
+[10.135s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.sh'
+[10.135s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.bash'
+[10.136s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.zsh'
+[10.136s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/colcon-core/packages/swerve_test)
+[10.136s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(swerve_test)
+[10.136s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test' for CMake module files
+[10.136s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test' for CMake config files
+[10.136s] Level 1:colcon.colcon_core.shell:create_environment_hook('swerve_test', 'cmake_prefix_path')
+[10.136s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/hook/cmake_prefix_path.dsv'
+[10.137s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/hook/cmake_prefix_path.sh'
+[10.137s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib'
+[10.137s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/bin'
+[10.137s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/pkgconfig/swerve_test.pc'
+[10.137s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/python3.12/site-packages'
+[10.137s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/bin'
+[10.137s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.dsv'
+[10.138s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.sh'
+[10.138s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.bash'
+[10.138s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.zsh'
+[10.138s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/colcon-core/packages/swerve_test)
+[10.449s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation -- -j28 -l28
+[10.450s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation
+[10.554s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trajectory_generation)
+[10.555s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation' for CMake module files
+[10.555s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation
+[10.555s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation' for CMake config files
+[10.556s] Level 1:colcon.colcon_core.shell:create_environment_hook('trajectory_generation', 'cmake_prefix_path')
+[10.556s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/hook/cmake_prefix_path.dsv'
+[10.556s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/hook/cmake_prefix_path.sh'
+[10.556s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib'
+[10.556s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/bin'
+[10.557s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib/pkgconfig/trajectory_generation.pc'
+[10.557s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib/python3.12/site-packages'
+[10.557s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/bin'
+[10.557s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.dsv'
+[10.557s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.sh'
+[10.558s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.bash'
+[10.558s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.zsh'
+[10.558s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/colcon-core/packages/trajectory_generation)
+[10.559s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(trajectory_generation)
+[10.559s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation' for CMake module files
+[10.559s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation' for CMake config files
+[10.559s] Level 1:colcon.colcon_core.shell:create_environment_hook('trajectory_generation', 'cmake_prefix_path')
+[10.559s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/hook/cmake_prefix_path.dsv'
+[10.560s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/hook/cmake_prefix_path.sh'
+[10.560s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib'
+[10.560s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/bin'
+[10.560s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib/pkgconfig/trajectory_generation.pc'
+[10.560s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib/python3.12/site-packages'
+[10.561s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/bin'
+[10.561s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.dsv'
+[10.561s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.sh'
+[10.561s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.bash'
+[10.562s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.zsh'
+[10.562s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/colcon-core/packages/trajectory_generation)
+[10.813s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can -- -j28 -l28
+[10.814s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can
+[11.504s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(odrive_can)
+[11.504s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can' for CMake module files
+[11.504s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can
+[11.505s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can' for CMake config files
+[11.505s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_can', 'cmake_prefix_path')
+[11.505s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/cmake_prefix_path.dsv'
+[11.505s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/cmake_prefix_path.sh'
+[11.505s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib'
+[11.505s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_can', 'ld_library_path_lib')
+[11.505s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/ld_library_path_lib.dsv'
+[11.505s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/ld_library_path_lib.sh'
+[11.506s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/bin'
+[11.506s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/pkgconfig/odrive_can.pc'
+[11.506s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages'
+[11.506s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_can', 'pythonpath')
+[11.506s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/pythonpath.dsv'
+[11.506s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/pythonpath.sh'
+[11.506s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/bin'
+[11.506s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.dsv'
+[11.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.sh'
+[11.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.bash'
+[11.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.zsh'
+[11.507s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/colcon-core/packages/odrive_can)
+[11.507s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(odrive_can)
+[11.507s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can' for CMake module files
+[11.508s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can' for CMake config files
+[11.508s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_can', 'cmake_prefix_path')
+[11.508s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/cmake_prefix_path.dsv'
+[11.508s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/cmake_prefix_path.sh'
+[11.508s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib'
+[11.508s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_can', 'ld_library_path_lib')
+[11.508s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/ld_library_path_lib.dsv'
+[11.508s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/ld_library_path_lib.sh'
+[11.509s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/bin'
+[11.509s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/pkgconfig/odrive_can.pc'
+[11.509s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages'
+[11.509s] Level 1:colcon.colcon_core.shell:create_environment_hook('odrive_can', 'pythonpath')
+[11.509s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/pythonpath.dsv'
+[11.509s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/hook/pythonpath.sh'
+[11.509s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/bin'
+[11.509s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.dsv'
+[11.510s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.sh'
+[11.510s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.bash'
+[11.510s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.zsh'
+[11.510s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/colcon-core/packages/odrive_can)
+[11.510s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_odrive_bridge' with build type 'ament_cmake'
+[11.510s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_odrive_bridge'
+[11.510s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[11.517s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_odrive_bridge -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge
+[12.251s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge' returned '0': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_odrive_bridge -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge
+[12.251s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge -- -j28 -l28
+[13.078s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller -- -j28 -l28
+[13.079s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller
+[13.172s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(controller)
+[13.172s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller' for CMake module files
+[13.173s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller
+[13.173s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller' for CMake config files
+[13.173s] Level 1:colcon.colcon_core.shell:create_environment_hook('controller', 'cmake_prefix_path')
+[13.173s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/hook/cmake_prefix_path.dsv'
+[13.173s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/hook/cmake_prefix_path.sh'
+[13.173s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/lib'
+[13.173s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/bin'
+[13.173s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/lib/pkgconfig/controller.pc'
+[13.174s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/lib/python3.12/site-packages'
+[13.174s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/bin'
+[13.174s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.dsv'
+[13.174s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.sh'
+[13.174s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.bash'
+[13.174s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.zsh'
+[13.174s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/colcon-core/packages/controller)
+[13.175s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(controller)
+[13.175s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller' for CMake module files
+[13.175s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller' for CMake config files
+[13.175s] Level 1:colcon.colcon_core.shell:create_environment_hook('controller', 'cmake_prefix_path')
+[13.175s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/hook/cmake_prefix_path.dsv'
+[13.175s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/hook/cmake_prefix_path.sh'
+[13.175s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/lib'
+[13.175s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/bin'
+[13.175s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/lib/pkgconfig/controller.pc'
+[13.176s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/lib/python3.12/site-packages'
+[13.176s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/bin'
+[13.176s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.dsv'
+[13.176s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.sh'
+[13.176s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.bash'
+[13.176s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.zsh'
+[13.176s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/colcon-core/packages/controller)
+[17.952s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge' returned '0': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge -- -j28 -l28
+[17.953s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge
+[18.110s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(swerve_odrive_bridge)
+[18.110s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge' returned '0': AMENT_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge
+[18.110s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge' for CMake module files
+[18.111s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge' for CMake config files
+[18.111s] Level 1:colcon.colcon_core.shell:create_environment_hook('swerve_odrive_bridge', 'cmake_prefix_path')
+[18.111s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/hook/cmake_prefix_path.dsv'
+[18.111s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/hook/cmake_prefix_path.sh'
+[18.111s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/lib'
+[18.111s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/bin'
+[18.111s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/lib/pkgconfig/swerve_odrive_bridge.pc'
+[18.111s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/lib/python3.12/site-packages'
+[18.111s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/bin'
+[18.112s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.dsv'
+[18.112s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.sh'
+[18.112s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.bash'
+[18.112s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.zsh'
+[18.112s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/colcon-core/packages/swerve_odrive_bridge)
+[18.112s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(swerve_odrive_bridge)
+[18.112s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge' for CMake module files
+[18.113s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge' for CMake config files
+[18.113s] Level 1:colcon.colcon_core.shell:create_environment_hook('swerve_odrive_bridge', 'cmake_prefix_path')
+[18.113s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/hook/cmake_prefix_path.dsv'
+[18.113s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/hook/cmake_prefix_path.sh'
+[18.113s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/lib'
+[18.113s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/bin'
+[18.113s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/lib/pkgconfig/swerve_odrive_bridge.pc'
+[18.113s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/lib/python3.12/site-packages'
+[18.113s] Level 1:colcon.colcon_core.environment:checking '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/bin'
+[18.113s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.dsv'
+[18.114s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.sh'
+[18.114s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.bash'
+[18.114s] INFO:colcon.colcon_core.shell:Creating package script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/swerve_odrive_bridge/package.zsh'
+[18.114s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_odrive_bridge/share/colcon-core/packages/swerve_odrive_bridge)
+[18.114s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[18.114s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[18.114s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[18.114s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[18.117s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[18.117s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[18.117s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[18.119s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ExecFailed: /usr/bin/dbus-launch terminated abnormally without any error message
+[18.119s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[18.119s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/local_setup.sh'
+[18.119s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/_local_setup_util_sh.py'
+[18.120s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/setup.sh'
+[18.120s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/local_setup.bash'
+[18.120s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/setup.bash'
+[18.120s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/local_setup.zsh'
+[18.121s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/setup.zsh'

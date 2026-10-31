@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "odrive_can/msg/detail/control_message__type_support.h"
-#include "odrive_can/msg/detail/control_message__struct.h"
 #include "odrive_can/msg/detail/control_message__functions.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "odrive_can/msg/detail/control_message__type_support.h"
+#include "odrive_can/msg/detail/control_message__struct.h"
 
 #ifdef __cplusplus
 extern "C"

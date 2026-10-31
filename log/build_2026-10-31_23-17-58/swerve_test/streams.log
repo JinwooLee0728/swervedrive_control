@@ -1,0 +1,71 @@
+[0.399s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_test -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test
+[0.433s] -- The C compiler identification is GNU 13.3.0
+[0.470s] -- The CXX compiler identification is GNU 13.3.0
+[0.481s] -- Detecting C compiler ABI info
+[0.537s] -- Detecting C compiler ABI info - done
+[0.546s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.546s] -- Detecting C compile features
+[0.546s] -- Detecting C compile features - done
+[0.552s] -- Detecting CXX compiler ABI info
+[0.615s] -- Detecting CXX compiler ABI info - done
+[0.623s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.623s] -- Detecting CXX compile features
+[0.624s] -- Detecting CXX compile features - done
+[0.627s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.725s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.766s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.810s] -- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.857s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.873s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.892s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.913s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.005s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.009s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.076s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.099s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.122s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.179s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.188s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.213s] -- Found dynamixel_sdk: 3.8.4 (/opt/ros/jazzy/share/dynamixel_sdk/cmake)
+[1.276s] -- Configuring done (0.9s)
+[1.289s] -- Generating done (0.0s)
+[1.293s] -- Build files have been written to: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test
+[1.303s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_test -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test
+[1.304s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test -- -j28 -l28
+[1.335s] [ 14%] Building CXX object CMakeFiles/swerve_test_lib.dir/src/swerve.cpp.o
+[1.338s] [ 28%] Building CXX object CMakeFiles/swerve_test_lib.dir/src/dynamixel_sdk_interface.cpp.o
+[1.340s] [ 42%] Building CXX object CMakeFiles/dxl_scan.dir/src/dxl_scan.cpp.o
+[1.705s] [ 57%] Linking CXX executable dxl_scan
+[1.783s] [ 57%] Built target dxl_scan
+[7.686s] [ 71%] Linking CXX static library libswerve_test_lib.a
+[7.781s] [ 71%] Built target swerve_test_lib
+[7.800s] [ 85%] Building CXX object CMakeFiles/swerve_steering_node.dir/src/swerve_node.cpp.o
+[9.681s] [100%] Linking CXX executable swerve_steering_node
+[9.872s] [100%] Built target swerve_steering_node
+[9.882s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test -- -j28 -l28
+[9.883s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test
+[9.890s] -- Install configuration: ""
+[9.890s] -- Execute custom install script
+[9.890s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/swerve_test/libswerve_test_lib.a
+[9.895s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/swerve_test/swerve_steering_node
+[9.902s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/swerve_test/dxl_scan
+[9.908s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/include//swerve_test/dynamixel_sdk_interface.hpp
+[9.913s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/include//swerve_test/swerve.hpp
+[9.920s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/config//swerve_steering.yaml
+[9.928s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/launch//swerve_keyboard.launch.py
+[9.935s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/ament_index/resource_index/package_run_dependencies/swerve_test
+[9.941s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/ament_index/resource_index/parent_prefix_path/swerve_test
+[9.948s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/ament_prefix_path.sh
+[9.953s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/ament_prefix_path.dsv
+[9.960s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/path.sh
+[9.964s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/path.dsv
+[9.969s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.bash
+[9.975s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.sh
+[9.980s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.zsh
+[9.987s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.dsv
+[9.992s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.dsv
+[9.997s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/ament_index/resource_index/packages/swerve_test
+[10.004s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/cmake/swerve_testConfig.cmake
+[10.008s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/cmake/swerve_testConfig-version.cmake
+[10.015s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.xml
+[10.021s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test

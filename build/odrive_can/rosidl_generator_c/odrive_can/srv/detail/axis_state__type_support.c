@@ -4,9 +4,9 @@
 
 #include <string.h>
 
-#include "odrive_can/srv/detail/axis_state__struct.h"
-#include "odrive_can/srv/detail/axis_state__functions.h"
 #include "odrive_can/srv/detail/axis_state__type_support.h"
+#include "odrive_can/srv/detail/axis_state__functions.h"
+#include "odrive_can/srv/detail/axis_state__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus

@@ -1,0 +1,26 @@
+In file included from /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/src/odrive_hardware_interface.cpp:3:
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp: In member function ‘void Estop_msg_t::encode_buf(uint8_t*) const’:
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp:117:30: warning: unused parameter ‘buf’ [-Wunused-parameter]
+  117 |     void encode_buf(uint8_t* buf) const {
+      |                     ~~~~~~~~~^~~
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp: In member function ‘void Estop_msg_t::decode_buf(const uint8_t*)’:
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp:120:36: warning: unused parameter ‘buf’ [-Wunused-parameter]
+  120 |     void decode_buf(const uint8_t* buf) {
+      |                     ~~~~~~~~~~~~~~~^~~
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp: In member function ‘void Enter_DFU_Mode_msg_t::encode_buf(uint8_t*) const’:
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp:872:30: warning: unused parameter ‘buf’ [-Wunused-parameter]
+  872 |     void encode_buf(uint8_t* buf) const {
+      |                     ~~~~~~~~~^~~
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp: In member function ‘void Enter_DFU_Mode_msg_t::decode_buf(const uint8_t*)’:
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/../odrive_base/include/can_simple_messages.hpp:875:36: warning: unused parameter ‘buf’ [-Wunused-parameter]
+  875 |     void decode_buf(const uint8_t* buf) {
+      |                     ~~~~~~~~~~~~~~~^~~
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/src/odrive_hardware_interface.cpp: In member function ‘virtual hardware_interface::CallbackReturn odrive_ros2_control::ODriveHardwareInterface::on_init(const hardware_interface::HardwareInfo&)’:
+/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/src/odrive_hardware_interface.cpp:111:53: warning: ‘virtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn hardware_interface::HardwareComponentInterface::on_init(const hardware_interface::HardwareInfo&)’ is deprecated: Use on_init(const HardwareComponentInterfaceParams & params) instead. [-Wdeprecated-declarations]
+  111 |     if (hardware_interface::SystemInterface::on_init(info) != CallbackReturn::SUCCESS) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+In file included from /opt/ros/jazzy/include/hardware_interface/hardware_interface/system_interface.hpp:18,
+                 from /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_ros2_control/src/odrive_hardware_interface.cpp:4:
+/opt/ros/jazzy/include/hardware_interface/hardware_interface/hardware_component_interface.hpp:140:26: note: declared here
+  140 |   virtual CallbackReturn on_init(const HardwareInfo & hardware_info);
+      |                          ^~~~~~~

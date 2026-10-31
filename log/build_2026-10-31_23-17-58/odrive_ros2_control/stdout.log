@@ -1,0 +1,55 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found ament_cmake_auto: 2.5.4 (/opt/ros/jazzy/share/ament_cmake_auto/cmake)
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_ros2_control
+[ 50%] Building CXX object CMakeFiles/odrive_ros2_control_plugin.dir/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_base/src/epoll_event_loop.cpp.o
+[ 50%] Building CXX object CMakeFiles/odrive_ros2_control_plugin.dir/src/odrive_hardware_interface.cpp.o
+[ 75%] Building CXX object CMakeFiles/odrive_ros2_control_plugin.dir/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_base/src/socket_can.cpp.o
+[100%] Linking CXX shared library libodrive_ros2_control_plugin.so
+[100%] Built target odrive_ros2_control_plugin
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control//odrive_hardware_interface.xml
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/lib/libodrive_ros2_control_plugin.so
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/ament_index/resource_index/package_run_dependencies/odrive_ros2_control
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/ament_index/resource_index/parent_prefix_path/odrive_ros2_control
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/environment/ament_prefix_path.sh
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/environment/ament_prefix_path.dsv
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/environment/path.sh
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/environment/path.dsv
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/local_setup.bash
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/local_setup.sh
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/local_setup.zsh
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/local_setup.dsv
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.dsv
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/ament_index/resource_index/packages/odrive_ros2_control
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/odrive_ros2_control
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/cmake/odrive_ros2_controlConfig.cmake
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/cmake/odrive_ros2_controlConfig-version.cmake
+-- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_ros2_control/share/odrive_ros2_control/package.xml
