@@ -1,1 +1,0 @@
-/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_cooptrans_bridge/setup.py

@@ -1,4 +1,0 @@
-source;share/swerve_odrive_bridge/local_setup.bash
-source;share/swerve_odrive_bridge/local_setup.dsv
-source;share/swerve_odrive_bridge/local_setup.sh
-source;share/swerve_odrive_bridge/local_setup.zsh

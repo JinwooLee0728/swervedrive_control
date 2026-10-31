@@ -1,3 +1,0 @@
-[console_scripts]
-swerve_keyboard = keyboard_to_swerve.keyboard_control_swerve_test:main
-talker = keyboard_to_swerve.publisher_member_function:main

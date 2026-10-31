@@ -1,7 +1,0 @@
-Metadata-Version: 2.1
-Name: swerve-cooptrans-bridge
-Version: 0.1.0
-Summary: Adapter between the cooptrans controller and swerve hardware.
-Maintainer: Jinwoo Lee
-Maintainer-email: jinwoolee0728@snu.ac.kr
-License: Apache-2.0

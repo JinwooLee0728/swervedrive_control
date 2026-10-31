@@ -1,2 +1,0 @@
-[console_scripts]
-kinematic_plant = cooptrans_sim.kinematic_plant:main

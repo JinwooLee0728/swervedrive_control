@@ -1,4 +1,0 @@
-source;share/swerve_test/local_setup.bash
-source;share/swerve_test/local_setup.dsv
-source;share/swerve_test/local_setup.sh
-source;share/swerve_test/local_setup.zsh

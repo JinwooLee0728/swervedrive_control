@@ -1,7 +1,0 @@
-Metadata-Version: 2.1
-Name: keyboard-to-swerve
-Version: 0.0.0
-Summary: Keyboard teleop for a single 2-module swerve robot.
-Maintainer: yyj
-Maintainer-email: dbys34@gmail.com
-License: Apache-2.0
