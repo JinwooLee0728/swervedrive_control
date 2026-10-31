@@ -1,0 +1,23 @@
+[0.361s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation -- -j28 -l28
+[0.404s] [100%] Built target trajectory_generator
+[0.411s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation -- -j28 -l28
+[0.412s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation
+[0.418s] -- Install configuration: ""
+[0.418s] -- Execute custom install script
+[0.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib/trajectory_generation/trajectory_generator
+[0.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/ament_index/resource_index/package_run_dependencies/trajectory_generation
+[0.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/ament_index/resource_index/parent_prefix_path/trajectory_generation
+[0.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/ament_prefix_path.sh
+[0.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/ament_prefix_path.dsv
+[0.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/path.sh
+[0.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/path.dsv
+[0.420s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.bash
+[0.420s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.sh
+[0.420s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.zsh
+[0.420s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.dsv
+[0.420s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.dsv
+[0.427s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/ament_index/resource_index/packages/trajectory_generation
+[0.427s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/cmake/trajectory_generationConfig.cmake
+[0.427s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/cmake/trajectory_generationConfig-version.cmake
+[0.427s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.xml
+[0.442s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation

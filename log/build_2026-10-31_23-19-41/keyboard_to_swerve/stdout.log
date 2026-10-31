@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing keyboard_to_swerve.egg-info/PKG-INFO
+writing dependency_links to keyboard_to_swerve.egg-info/dependency_links.txt
+writing entry points to keyboard_to_swerve.egg-info/entry_points.txt
+writing requirements to keyboard_to_swerve.egg-info/requires.txt
+writing top-level names to keyboard_to_swerve.egg-info/top_level.txt
+reading manifest file 'keyboard_to_swerve.egg-info/SOURCES.txt'
+writing manifest file 'keyboard_to_swerve.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/python3.12/site-packages/keyboard-to-swerve.egg-link (link to .)
+Installing swerve_keyboard script to /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/keyboard_to_swerve
+Installing talker script to /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/keyboard_to_swerve
+
+Installed /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve
+running symlink_data

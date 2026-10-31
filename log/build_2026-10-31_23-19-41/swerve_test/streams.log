@@ -1,0 +1,31 @@
+[0.361s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test -- -j28 -l28
+[0.401s] [ 28%] Built target dxl_scan
+[0.408s] [ 71%] Built target swerve_test_lib
+[0.427s] [100%] Built target swerve_steering_node
+[0.449s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test -- -j28 -l28
+[0.449s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test
+[0.455s] -- Install configuration: ""
+[0.455s] -- Execute custom install script
+[0.455s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/swerve_test/libswerve_test_lib.a
+[0.455s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/swerve_test/swerve_steering_node
+[0.456s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/lib/swerve_test/dxl_scan
+[0.456s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/include//swerve_test/dynamixel_sdk_interface.hpp
+[0.456s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/include//swerve_test/swerve.hpp
+[0.456s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/config//swerve_steering.yaml
+[0.456s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/launch//swerve_keyboard.launch.py
+[0.456s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/ament_index/resource_index/package_run_dependencies/swerve_test
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/ament_index/resource_index/parent_prefix_path/swerve_test
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/ament_prefix_path.sh
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/ament_prefix_path.dsv
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/path.sh
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/environment/path.dsv
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.bash
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.sh
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.zsh
+[0.457s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/local_setup.dsv
+[0.458s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.dsv
+[0.464s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/ament_index/resource_index/packages/swerve_test
+[0.464s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/cmake/swerve_testConfig.cmake
+[0.464s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/cmake/swerve_testConfig-version.cmake
+[0.464s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/swerve_test/share/swerve_test/package.xml
+[0.465s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_test
