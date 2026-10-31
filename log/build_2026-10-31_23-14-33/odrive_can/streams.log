@@ -1,0 +1,305 @@
+[0.015s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can
+[0.401s] -- The C compiler identification is GNU 13.3.0
+[0.401s] -- The CXX compiler identification is GNU 13.3.0
+[0.401s] -- Detecting C compiler ABI info
+[0.401s] -- Detecting C compiler ABI info - done
+[0.401s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.401s] -- Detecting C compile features
+[0.401s] -- Detecting C compile features - done
+[0.401s] -- Detecting CXX compiler ABI info
+[0.401s] -- Detecting CXX compiler ABI info - done
+[0.401s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.401s] -- Detecting CXX compile features
+[0.401s] -- Detecting CXX compile features - done
+[0.401s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.401s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.401s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.414s] -- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.441s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.450s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.460s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.472s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.518s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.520s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.575s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.589s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[0.608s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.692s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.702s] -- Found rosidl_adapter: 4.6.6 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[0.704s] -- Found std_srvs: 5.3.6 (/opt/ros/jazzy/share/std_srvs/cmake)
+[1.176s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[1.693s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.916s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.918s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[2.033s] -- Found PythonExtra: /usr/bin/python3  
+[2.335s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[2.373s] -- Configuring done (2.3s)
+[2.398s] -- Generating done (0.0s)
+[2.405s] -- Build files have been written to: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can
+[2.414s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can
+[2.414s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can -- -j28 -l28
+[2.460s] [  1%] Generating type hashes for ROS interfaces
+[2.468s] [  1%] Built target ament_cmake_python_symlink_odrive_can
+[2.619s] running egg_info
+[2.619s] creating odrive_can.egg-info
+[2.632s] writing odrive_can.egg-info/PKG-INFO
+[2.632s] writing dependency_links to odrive_can.egg-info/dependency_links.txt
+[2.632s] writing top-level names to odrive_can.egg-info/top_level.txt
+[2.632s] writing manifest file 'odrive_can.egg-info/SOURCES.txt'
+[2.669s] reading manifest file 'odrive_can.egg-info/SOURCES.txt'
+[2.669s] [  1%] Built target odrive_can__rosidl_generator_type_description
+[2.669s] writing manifest file 'odrive_can.egg-info/SOURCES.txt'
+[2.680s] [  2%] Generating C code for ROS interfaces
+[2.688s] [  4%] Generating C++ code for ROS interfaces
+[2.693s] [  4%] Built target ament_cmake_python_build_odrive_can_egg
+[2.932s] [  4%] Built target odrive_can__cpp
+[3.009s] [  5%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/control_message__description.c.o
+[3.009s] [  7%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/control_message__functions.c.o
+[3.012s] [ 10%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/control_message__type_support.c.o
+[3.012s] [ 10%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/controller_status__description.c.o
+[3.012s] [ 17%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/o_drive_status__type_support.c.o
+[3.012s] [ 17%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/controller_status__type_support.c.o
+[3.012s] [ 17%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/controller_status__functions.c.o
+[3.012s] [ 17%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/o_drive_status__description.c.o
+[3.012s] [ 17%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/srv/detail/axis_state__type_support.c.o
+[3.012s] [ 18%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/srv/detail/axis_state__description.c.o
+[3.012s] [ 20%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/msg/detail/o_drive_status__functions.c.o
+[3.013s] [ 21%] Building C object CMakeFiles/odrive_can__rosidl_generator_c.dir/rosidl_generator_c/odrive_can/srv/detail/axis_state__functions.c.o
+[3.086s] [ 23%] Linking C shared library libodrive_can__rosidl_generator_c.so
+[3.116s] [ 23%] Built target odrive_can__rosidl_generator_c
+[3.123s] [ 28%] Generating C introspection for ROS interfaces
+[3.123s] [ 28%] Generating C type support dispatch for ROS interfaces
+[3.123s] [ 28%] Generating C++ type support dispatch for ROS interfaces
+[3.123s] [ 28%] Generating C++ introspection for ROS interfaces
+[3.125s] [ 31%] Generating C type support for eProsima Fast-RTPS
+[3.125s] [ 31%] Generating C++ type support for eProsima Fast-RTPS
+[3.365s] [ 34%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/odrive_can/msg/o_drive_status__type_support.cpp.o
+[3.365s] [ 34%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/odrive_can/srv/axis_state__type_support.cpp.o
+[3.366s] [ 36%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/odrive_can/msg/control_message__type_support.cpp.o
+[3.366s] [ 37%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/odrive_can/msg/controller_status__type_support.cpp.o
+[3.388s] [ 39%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/odrive_can/msg/detail/o_drive_status__type_support.cpp.o
+[3.388s] [ 42%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/odrive_can/msg/detail/controller_status__type_support.cpp.o
+[3.388s] [ 42%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/odrive_can/msg/detail/control_message__type_support.cpp.o
+[3.389s] [ 43%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/odrive_can/srv/detail/axis_state__type_support.cpp.o
+[3.403s] [ 44%] Building C object CMakeFiles/odrive_can__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/odrive_can/srv/detail/axis_state__type_support.c.o
+[3.404s] [ 49%] Building C object CMakeFiles/odrive_can__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/odrive_can/msg/detail/control_message__type_support.c.o
+[3.404s] [ 49%] Building C object CMakeFiles/odrive_can__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/odrive_can/msg/detail/o_drive_status__type_support.c.o
+[3.404s] [ 49%] Building C object CMakeFiles/odrive_can__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/odrive_can/msg/detail/controller_status__type_support.c.o
+[3.458s] [ 50%] Linking C shared library libodrive_can__rosidl_typesupport_introspection_c.so
+[3.480s] [ 52%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/odrive_can/msg/detail/dds_fastrtps/control_message__type_support.cpp.o
+[3.481s] [ 53%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/odrive_can/msg/detail/dds_fastrtps/controller_status__type_support.cpp.o
+[3.481s] [ 55%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/odrive_can/msg/detail/dds_fastrtps/o_drive_status__type_support.cpp.o
+[3.481s] [ 56%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/odrive_can/srv/detail/dds_fastrtps/axis_state__type_support.cpp.o
+[3.499s] [ 56%] Built target odrive_can__rosidl_typesupport_introspection_c
+[3.501s] [ 59%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_c.dir/rosidl_typesupport_c/odrive_can/msg/controller_status__type_support.cpp.o
+[3.501s] [ 59%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_c.dir/rosidl_typesupport_c/odrive_can/msg/control_message__type_support.cpp.o
+[3.502s] [ 60%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_c.dir/rosidl_typesupport_c/odrive_can/msg/o_drive_status__type_support.cpp.o
+[3.502s] [ 62%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_c.dir/rosidl_typesupport_c/odrive_can/srv/axis_state__type_support.cpp.o
+[3.558s] [ 63%] Linking CXX shared library libodrive_can__rosidl_typesupport_c.so
+[3.675s] [ 65%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/odrive_can/srv/detail/axis_state__type_support_c.cpp.o
+[3.677s] [ 66%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/odrive_can/msg/detail/control_message__type_support_c.cpp.o
+[3.680s] [ 68%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/odrive_can/msg/detail/controller_status__type_support_c.cpp.o
+[3.681s] [ 69%] Building CXX object CMakeFiles/odrive_can__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/odrive_can/msg/detail/o_drive_status__type_support_c.cpp.o
+[3.695s] [ 69%] Built target odrive_can__rosidl_typesupport_c
+[3.912s] [ 71%] Linking CXX shared library libodrive_can__rosidl_typesupport_introspection_cpp.so
+[3.975s] [ 71%] Built target odrive_can__rosidl_typesupport_introspection_cpp
+[3.977s] [ 72%] Linking CXX shared library libodrive_can__rosidl_typesupport_cpp.so
+[4.051s] [ 72%] Built target odrive_can__rosidl_typesupport_cpp
+[4.071s] [ 76%] Building CXX object CMakeFiles/odrive_can_node.dir/src/main.cpp.o
+[4.071s] [ 76%] Building CXX object CMakeFiles/odrive_can_node.dir/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_base/src/epoll_event_loop.cpp.o
+[4.071s] [ 76%] Building CXX object CMakeFiles/odrive_can_node.dir/src/odrive_can_node.cpp.o
+[4.073s] [ 78%] Building CXX object CMakeFiles/odrive_can_node.dir/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/ros_odrive/odrive_base/src/socket_can.cpp.o
+[4.184s] [ 79%] Linking CXX shared library libodrive_can__rosidl_typesupport_fastrtps_cpp.so
+[4.201s] [ 81%] Linking CXX shared library libodrive_can__rosidl_typesupport_fastrtps_c.so
+[4.244s] [ 81%] Built target odrive_can__rosidl_typesupport_fastrtps_c
+[4.264s] [ 81%] Built target odrive_can__rosidl_typesupport_fastrtps_cpp
+[4.284s] [ 81%] Built target odrive_can
+[4.303s] [ 82%] Generating Python code for ROS interfaces
+[4.706s] [ 82%] Built target odrive_can__py
+[4.724s] [ 84%] Building C object CMakeFiles/odrive_can__rosidl_generator_py.dir/rosidl_generator_py/odrive_can/msg/_control_message_s.c.o
+[4.727s] [ 88%] Building C object CMakeFiles/odrive_can__rosidl_generator_py.dir/rosidl_generator_py/odrive_can/srv/_axis_state_s.c.o
+[4.727s] [ 88%] Building C object CMakeFiles/odrive_can__rosidl_generator_py.dir/rosidl_generator_py/odrive_can/msg/_o_drive_status_s.c.o
+[4.727s] [ 88%] Building C object CMakeFiles/odrive_can__rosidl_generator_py.dir/rosidl_generator_py/odrive_can/msg/_controller_status_s.c.o
+[4.868s] [ 89%] Linking C shared library libodrive_can__rosidl_generator_py.so
+[4.909s] [ 89%] Built target odrive_can__rosidl_generator_py
+[4.927s] [ 91%] Building C object CMakeFiles/odrive_can_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/odrive_can/_odrive_can_s.ep.rosidl_typesupport_introspection_c.c.o
+[4.929s] [ 94%] Building C object CMakeFiles/odrive_can_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/odrive_can/_odrive_can_s.ep.rosidl_typesupport_fastrtps_c.c.o
+[4.929s] [ 94%] Building C object CMakeFiles/odrive_can_s__rosidl_typesupport_c.dir/rosidl_generator_py/odrive_can/_odrive_can_s.ep.rosidl_typesupport_c.c.o
+[5.011s] [ 95%] Linking C shared module rosidl_generator_py/odrive_can/odrive_can_s__rosidl_typesupport_fastrtps_c.so
+[5.011s] [ 97%] Linking C shared module rosidl_generator_py/odrive_can/odrive_can_s__rosidl_typesupport_c.so
+[5.041s] [ 98%] Linking C shared module rosidl_generator_py/odrive_can/odrive_can_s__rosidl_typesupport_introspection_c.so
+[5.041s] [ 98%] Built target odrive_can_s__rosidl_typesupport_fastrtps_c
+[5.041s] [ 98%] Built target odrive_can_s__rosidl_typesupport_c
+[5.070s] [ 98%] Built target odrive_can_s__rosidl_typesupport_introspection_c
+[10.710s] [100%] Linking CXX executable odrive_can_node
+[10.885s] [100%] Built target odrive_can_node
+[10.896s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can -- -j28 -l28
+[10.897s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can
+[10.903s] -- Install configuration: ""
+[10.904s] -- Execute custom install script
+[10.904s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/ament_index/resource_index/rosidl_interfaces/odrive_can
+[10.909s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ControlMessage.json
+[10.916s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ControllerStatus.json
+[10.921s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ODriveStatus.json
+[10.928s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/srv/AxisState.json
+[10.936s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/control_message.h
+[10.943s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/controller_status.h
+[10.948s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__functions.h
+[10.955s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__struct.h
+[10.962s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__type_support.h
+[10.967s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__functions.h
+[10.974s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__struct.h
+[10.981s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__type_support.h
+[10.988s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__functions.h
+[10.992s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__struct.h
+[10.999s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__type_support.h
+[11.005s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/o_drive_status.h
+[11.012s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/rosidl_generator_c__visibility_control.h
+[11.019s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/axis_state.h
+[11.027s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__functions.h
+[11.032s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__struct.h
+[11.039s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__type_support.h
+[11.045s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/library_path.sh
+[11.050s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/library_path.dsv
+[11.056s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__rosidl_typesupport_fastrtps_c.h
+[11.063s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__rosidl_typesupport_fastrtps_c.h
+[11.070s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__rosidl_typesupport_fastrtps_c.h
+[11.076s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[11.083s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__rosidl_typesupport_fastrtps_c.h
+[11.088s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/control_message.hpp
+[11.094s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/controller_status.hpp
+[11.100s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__builder.hpp
+[11.104s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__struct.hpp
+[11.110s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__traits.hpp
+[11.114s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__type_support.hpp
+[11.120s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__builder.hpp
+[11.126s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__struct.hpp
+[11.131s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__traits.hpp
+[11.135s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__type_support.hpp
+[11.140s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__builder.hpp
+[11.147s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__struct.hpp
+[11.152s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__traits.hpp
+[11.158s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__type_support.hpp
+[11.162s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/o_drive_status.hpp
+[11.168s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/rosidl_generator_cpp__visibility_control.hpp
+[11.173s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/axis_state.hpp
+[11.178s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__builder.hpp
+[11.184s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__struct.hpp
+[11.188s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__traits.hpp
+[11.194s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__type_support.hpp
+[11.199s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__rosidl_typesupport_fastrtps_cpp.hpp
+[11.205s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__rosidl_typesupport_fastrtps_cpp.hpp
+[11.211s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__rosidl_typesupport_fastrtps_cpp.hpp
+[11.216s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[11.220s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__rosidl_typesupport_fastrtps_cpp.hpp
+[11.225s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__rosidl_typesupport_introspection_c.h
+[11.231s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__rosidl_typesupport_introspection_c.h
+[11.237s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__rosidl_typesupport_introspection_c.h
+[11.243s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[11.247s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__rosidl_typesupport_introspection_c.h
+[11.252s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/control_message__rosidl_typesupport_introspection_cpp.hpp
+[11.257s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/controller_status__rosidl_typesupport_introspection_cpp.hpp
+[11.263s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/msg/detail/o_drive_status__rosidl_typesupport_introspection_cpp.hpp
+[11.269s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/include/odrive_can/odrive_can/srv/detail/axis_state__rosidl_typesupport_introspection_cpp.hpp
+[11.274s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/pythonpath.sh
+[11.280s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/pythonpath.dsv
+[11.285s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can-0.0.1-py3.12.egg-info/PKG-INFO
+[11.292s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can-0.0.1-py3.12.egg-info/SOURCES.txt
+[11.299s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can-0.0.1-py3.12.egg-info/dependency_links.txt
+[11.304s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can-0.0.1-py3.12.egg-info/top_level.txt
+[11.310s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/__init__.py
+[11.314s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/_odrive_can_s.ep.rosidl_typesupport_c.c
+[11.322s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/_odrive_can_s.ep.rosidl_typesupport_fastrtps_c.c
+[11.330s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/_odrive_can_s.ep.rosidl_typesupport_introspection_c.c
+[11.336s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/__init__.py
+[11.344s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_control_message.py
+[11.350s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_control_message_s.c
+[11.356s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_controller_status.py
+[11.363s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_controller_status_s.c
+[11.370s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_o_drive_status.py
+[11.376s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_o_drive_status_s.c
+[11.384s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/odrive_can_s__rosidl_typesupport_c.so
+[11.391s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/odrive_can_s__rosidl_typesupport_fastrtps_c.so
+[11.396s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/odrive_can_s__rosidl_typesupport_introspection_c.so
+[11.404s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/srv/__init__.py
+[11.411s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/srv/_axis_state.py
+[11.415s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/srv/_axis_state_s.c
+[11.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/odrive_can_s__rosidl_typesupport_fastrtps_c.so
+[11.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/odrive_can_s__rosidl_typesupport_introspection_c.so
+[11.419s] -- Up-to-date symlink: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/odrive_can_s__rosidl_typesupport_c.so
+[11.419s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ControlMessage.idl
+[11.424s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ControllerStatus.idl
+[11.430s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ODriveStatus.idl
+[11.436s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/srv/AxisState.idl
+[11.440s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ControlMessage.msg
+[11.446s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ControllerStatus.msg
+[11.451s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/msg/ODriveStatus.msg
+[11.457s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/srv/AxisState.srv
+[11.463s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/odrive_can/odrive_can_node
+[11.469s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/launch/example_launch.yaml
+[11.474s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/ament_index/resource_index/package_run_dependencies/odrive_can
+[11.479s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/ament_index/resource_index/parent_prefix_path/odrive_can
+[11.485s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/ament_prefix_path.sh
+[11.491s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/ament_prefix_path.dsv
+[11.497s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/path.sh
+[11.502s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/environment/path.dsv
+[11.507s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/local_setup.bash
+[11.512s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/local_setup.sh
+[11.518s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/local_setup.zsh
+[11.523s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/local_setup.dsv
+[11.529s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.dsv
+[11.534s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/ament_index/resource_index/packages/odrive_can
+[11.539s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/rosidl_cmake-extras.cmake
+[11.545s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/ament_cmake_export_dependencies-extras.cmake
+[11.551s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/ament_cmake_export_include_directories-extras.cmake
+[11.557s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/ament_cmake_export_libraries-extras.cmake
+[11.562s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/ament_cmake_export_targets-extras.cmake
+[11.567s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[11.573s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[11.579s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_canConfig.cmake
+[11.585s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_canConfig-version.cmake
+[11.590s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/package.xml
+[11.595s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_generator_c.so
+[11.595s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_generator_c.so" to ""
+[11.595s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_fastrtps_c.so
+[11.595s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_fastrtps_c.so" to ""
+[11.595s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_fastrtps_cpp.so
+[11.595s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_fastrtps_cpp.so" to ""
+[11.595s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_introspection_c.so
+[11.595s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_introspection_c.so" to ""
+[11.596s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_c.so
+[11.596s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_c.so" to ""
+[11.596s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_introspection_cpp.so
+[11.596s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_introspection_cpp.so" to ""
+[11.596s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_cpp.so
+[11.596s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_typesupport_cpp.so" to ""
+[11.628s] Listing '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can'...
+[11.628s] Compiling '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/__init__.py'...
+[11.628s] Listing '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg'...
+[11.628s] Compiling '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/__init__.py'...
+[11.628s] Compiling '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_control_message.py'...
+[11.628s] Compiling '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_controller_status.py'...
+[11.628s] Compiling '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/msg/_o_drive_status.py'...
+[11.628s] Listing '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/srv'...
+[11.628s] Compiling '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/srv/__init__.py'...
+[11.628s] Compiling '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/python3.12/site-packages/odrive_can/srv/_axis_state.py'...
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_generator_py.so
+[11.632s] -- Set non-toolchain portion of runtime path of "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/lib/libodrive_can__rosidl_generator_py.so" to ""
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_generator_cExport.cmake
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_generator_cExport-noconfig.cmake
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_typesupport_fastrtps_cExport.cmake
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_generator_cppExport.cmake
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_typesupport_fastrtps_cppExport.cmake
+[11.632s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_introspection_cExport.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_cExport.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_cExport-noconfig.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_introspection_cppExport.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_cppExport.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/odrive_can__rosidl_typesupport_cppExport-noconfig.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_generator_pyExport.cmake
+[11.633s] -- Installing: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/odrive_can/share/odrive_can/cmake/export_odrive_can__rosidl_generator_pyExport-noconfig.cmake
+[11.634s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can

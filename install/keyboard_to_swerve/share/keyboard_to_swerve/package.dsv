@@ -1,0 +1,6 @@
+source;share/keyboard_to_swerve/hook/pythonpath.dsv
+source;share/keyboard_to_swerve/hook/pythonpath.sh
+source;share/keyboard_to_swerve/hook/ament_prefix_path.dsv
+source;share/keyboard_to_swerve/hook/ament_prefix_path.sh
+source;../../build/keyboard_to_swerve/share/keyboard_to_swerve/hook/pythonpath_develop.dsv
+source;../../build/keyboard_to_swerve/share/keyboard_to_swerve/hook/pythonpath_develop.sh

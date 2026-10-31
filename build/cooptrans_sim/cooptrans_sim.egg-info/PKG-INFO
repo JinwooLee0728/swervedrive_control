@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: cooptrans-sim
+Version: 0.0.1
+Summary: Quasi-static kinematic plant for software-in-the-loop testing
+Maintainer: jinwoolee
+License: Apache-2.0

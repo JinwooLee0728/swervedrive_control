@@ -1,0 +1,53 @@
+/**:
+  ros__parameters:
+    # Input topics, one TwistStamped per module (linear.x = wheel speed m/s).
+    # Source is swerve_cooptrans_bridge during experiments, or the keyboard
+    # node during bench testing. RELATIVE names -- see note at bottom.
+    swerve1_topic: "swerve1/cmd_vel"
+    swerve2_topic: "swerve2/cmd_vel"
+
+    # ODrive node namespaces. The bridge publishes to "<ns>/control_message"
+    # and calls "<ns>/clear_errors" + "<ns>/request_axis_state" on startup.
+    odrive1_namespace: "odrive_axis0"
+    odrive2_namespace: "odrive_axis1"
+
+    # Drive geometry.
+    # !! VERIFY wheel_radius ON THE RIG BEFORE ANY POWERED RUN !!
+    # 0.35 m is a 0.7 m diameter wheel, which is larger than the 0.46 m module
+    # track and larger than the payload's short side. If the real wheel is
+    # 70 mm diameter this should be 0.035, and every wheel command is
+    # currently scaled 10x wrong.
+    wheel_radius: 0.35        # m
+    drive_gear_ratio: 6.0     # 6 motor rev per 1 wheel rev
+
+    # Flip per-axis if wheel rolls backward on +linear.x.
+    odrive1_sign: 1.0
+    odrive2_sign: 1.0
+
+    # On startup: clear_errors -> pre-seed input_vel=0 -> request_axis_state(8).
+    # If this fails the bridge refuses to publish.
+    auto_arm: true
+    arm_timeout_sec: 5.0
+
+    # Heartbeat: continuously publish the current target velocity on both axes.
+    # Feeds the ODrive input watchdog so the axis doesn't drop to IDLE between
+    # keyboard messages. 20 Hz is well inside any reasonable watchdog timeout.
+    publish_rate_hz: 20.0
+
+    # Coaxial steering-drive coupling compensation. On most swerve modules,
+    # rotating the steering hub also rotates the drive ring through coaxial
+    # gears, so the wheel spins even with zero drive command. We feedforward
+    # a counter-rotation: drive_motor_revs += coupling * steering_motor_revs.
+    # MEASURE THIS: hold the drive command at zero, turn the steering by hand,
+    # tune until the wheel stops rolling. It matters more here than in teleop,
+    # because the cooperative-transport controller steers continuously.
+    steering_drive_coupling: -0.6
+    # Steering motor revs per module rev. Needed to reconstruct steering
+    # motor velocity from joint_states (which is in module rad/s).
+    # Must match `gear_ratio` in swerve_test/config/swerve_steering.yaml.
+    steering_gear_ratio: 5.0
+    steering_joint_states_topic: "swerve_steering/joint_states"
+
+    # NOTE: every topic name above is relative on purpose. Robots are
+    # separated by launching this node under /robot1, /robot2, ... A leading
+    # '/' would make all robots' bridges drive the same two ODrive nodes.

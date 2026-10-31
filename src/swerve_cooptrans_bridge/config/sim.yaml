@@ -1,0 +1,273 @@
+# =============================================================================
+#  DESKTOP SIMULATION CONFIG
+# =============================================================================
+#  Mirrors config/hardware.yaml -- same geometry, same limits, same gains, same
+#  controller -- and adds the simulated planner, sensor and plant. It is a
+#  SEPARATE file so you can perturb the simulation (noise, path, initial pose)
+#  without touching the file that drives the real robots.
+#
+#  `hardware_check` validates THIS file too, with the same cross-constraints,
+#  so a sim that quietly diverges from the rig geometry is caught rather than
+#  trusted. Keep the geometry here equal to hardware.yaml.
+#
+#  What is real code here vs simulated:
+#    REAL      controller, trajectory_generator, lidar_pose_adapter,
+#              swerve_cooptrans_bridge  (the same nodes the robots run)
+#    SIMULATED sim_planner, lidar_sim, kinematic_plant
+#    ABSENT    swerve_steering_node, swerve_odrive_bridge, odrive_can_node
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+#  CONTROLLER -- identical to hardware.yaml
+# -----------------------------------------------------------------------------
+controller:
+  ros__parameters:
+    controller_name: "proposed"
+    per_robot_saturation: false
+
+    topic_prefix: ""
+    ref_topic_prefix: ""
+    payload_name: "payload"
+    robot_names: ["module1", "module2", "module3", "module4"]
+
+    r_x: [0.35, 0.35, -0.35, -0.35]
+    r_y: [0.23, -0.23, 0.23, -0.23]
+
+    v_max: 0.20
+    w_max: 1.2
+    rate_hz: 100.0
+    input_timeout: 0.2
+
+    proposed:
+      direct_steering: true      # command theta_d (eq. 8); skip eq. 22-23
+      k0_diag: [10.0, 10.0, 50.0]
+      k1_diag: [5.0, 5.0, 30.0]
+      lambda0: 0.01
+      delta_sig: 0.05
+      k_null: 0.5
+      eps_icr: 0.01
+      gamma_v: 7.0               # unused while direct_steering is true
+      k_theta: 15.0              # unused while direct_steering is true
+      beta_theta: 0.2
+      sgn_smooth: 0.03
+      eta0: 0.1
+      psi0: 0.0
+      V0: 0.0
+
+
+# -----------------------------------------------------------------------------
+#  SIMULATED PLANNER -- stands in for the external receding-horizon node
+# -----------------------------------------------------------------------------
+sim_planner:
+  ros__parameters:
+    # "path"   -> publish a horizon as nav_msgs/Path, replanned from the
+    #             payload's actual progress; trajectory_generator applies the
+    #             progression-rate regulator (eq. 13). Preferred.
+    # "direct" -> publish ref_pose/twist/accel itself, bypassing
+    #             trajectory_generator. Eq. 13 does not exist in this mode.
+    mode: "path"
+    topic_prefix: ""
+    payload_name: "payload"
+    world_frame: "world"
+
+    # Closed lissajous loop. Chosen because it reverses curvature (the ICR
+    # crosses from one side of the payload to the other), which is the hard
+    # case for the eta/psi parameterization, and it sustains rotation.
+    amp_x: 1.6
+    amp_y: 0.9
+    center_x: 0.0
+    center_y: 0.0
+    amp_theta: 0.5
+    loop_time: 60.0
+
+    horizon_time: 12.0
+    horizon_points: 60
+    replan_period: 1.0
+
+    rate_hz: 100.0
+    settle_time: 2.0
+
+
+# -----------------------------------------------------------------------------
+#  REFERENCE -- the real trajectory_generator, planner mode
+# -----------------------------------------------------------------------------
+trajectory_generator:
+  ros__parameters:
+    topic_prefix: ""
+    payload_name: "payload"
+    world_frame: "world"
+    path_source: "planner"
+    planner_path_topic: "planned_path"
+    dot_s_nom: 1.0
+    ks_diag: [10.0, 10.0, 20.0]     # Ks in eq. 13
+    rate_hz: 100.0
+    ddot_s_filter: 0.0
+    hold_at_end: false              # the loop is closed; do not latch the end
+
+
+# -----------------------------------------------------------------------------
+#  SIMULATED SENSOR -- degrades plant truth the way a real LiDAR would
+# -----------------------------------------------------------------------------
+lidar_sim:
+  ros__parameters:
+    truth_topic: "/payload/truth_pose"
+    output_topic: "/lidar/payload_odom"
+    output_type: "Odometry"
+    rate_hz: 20.0            # far below the 200 Hz plant: the controller sees
+                             # a held, stale pose between updates
+    pos_noise_std: 0.004     # [m]
+    yaw_noise_std: 0.004     # [rad]
+    delay_sec: 0.0           # raise to test transport delay
+    dropout_prob: 0.0        # raise to exercise the watchdogs
+    frame_id: "world"
+    seed: 12345
+
+
+# -----------------------------------------------------------------------------
+#  REAL ADAPTER -- same node that runs on NUC1
+# -----------------------------------------------------------------------------
+lidar_pose_adapter:
+  ros__parameters:
+    input_topic: "/lidar/payload_odom"
+    input_type: "Odometry"
+    topic_prefix: ""
+    payload_name: "payload"
+    world_frame: "world"
+    restamp: false
+
+
+# -----------------------------------------------------------------------------
+#  REAL BRIDGES -- same nodes that run on each NUC.
+#  publish_module_pose is FALSE here: the plant owns <agent>/pose in sim
+#  because it has the true module state. The bridges still run in the loop,
+#  converting theta_d into the chassis-frame steer angle the hardware would
+#  receive, which is what the GUI displays.
+# -----------------------------------------------------------------------------
+/robot1/swerve_cooptrans_bridge:
+  ros__parameters:
+    agent_names: ["module1", "module2"]
+    module_names: ["swerve1", "swerve2"]
+    mount_x: 0.35
+    mount_y: 0.0
+    mount_angle: 0.0
+    module_offsets_x: [0.0, 0.0]
+    module_offsets_y: [0.23, -0.23]
+    payload_topic: "/payload/pose"
+    rate_hz: 100.0
+    cmd_timeout: 0.2
+    pose_timeout: 0.5
+    wheel_speed_max: 0.5
+    attenuate_on_heading_error: 7.0
+    heading_error_stop: 1.2
+    publish_module_pose: false
+
+/robot2/swerve_cooptrans_bridge:
+  ros__parameters:
+    agent_names: ["module3", "module4"]
+    module_names: ["swerve1", "swerve2"]
+    mount_x: -0.35
+    mount_y: 0.0
+    mount_angle: 0.0
+    module_offsets_x: [0.0, 0.0]
+    module_offsets_y: [0.23, -0.23]
+    payload_topic: "/payload/pose"
+    rate_hz: 100.0
+    cmd_timeout: 0.2
+    pose_timeout: 0.5
+    wheel_speed_max: 0.5
+    attenuate_on_heading_error: 7.0
+    heading_error_stop: 1.2
+    publish_module_pose: false
+
+
+# -----------------------------------------------------------------------------
+#  SIMULATED PLANT -- payload physics + the Dynamixel servo model
+# -----------------------------------------------------------------------------
+kinematic_plant:
+  ros__parameters:
+    topic_prefix: ""
+    payload_name: "payload"
+    world_frame: "world"
+    robot_names: ["module1", "module2", "module3", "module4"]
+    r_x: [0.35, 0.35, -0.35, -0.35]
+    r_y: [0.23, -0.23, 0.23, -0.23]
+    plant_rate: 200.0
+
+    # Model the Dynamixel: slew toward <agent>/desired_heading, rate-limited.
+    # steer_rate_max must equal controller w_max, which in turn is set by
+    # profile_velocity below -- hardware_check enforces the whole chain.
+    steering_mode: "servo"
+    steer_rate_max: 1.2
+
+    # Fake steering encoders, so the real bridges close their heading loop
+    # against the plant exactly as they will against hardware.
+    publish_module_encoders: true
+    module_robot_ns: ["robot1", "robot1", "robot2", "robot2"]
+    module_hw_names: ["swerve1", "swerve2", "swerve1", "swerve2"]
+    module_mount_angles: [0.0, 0.0, 0.0, 0.0]
+
+    # Start slightly off the path so the first seconds show convergence.
+    init_x: 0.15
+    init_y: -0.10
+    init_theta: 0.0
+    init_headings: [0.0, 0.0, 0.0, 0.0]
+
+
+# -----------------------------------------------------------------------------
+#  GUI
+# -----------------------------------------------------------------------------
+swerve_viz:
+  ros__parameters:
+    topic_prefix: ""
+    payload_name: "payload"
+    robot_names: ["module1", "module2", "module3", "module4"]
+    r_x: [0.35, 0.35, -0.35, -0.35]
+    r_y: [0.23, -0.23, 0.23, -0.23]
+    payload_size: [1.0, 0.4]       # Lx, Ly [m]
+    wheel_len: 0.14
+    wheel_wid: 0.06
+    v_max: 0.20
+    arrow_scale: 1.2               # metres drawn per (m/s)
+    view_bounds: [-2.6, 2.6, -2.0, 2.0]
+    update_hz: 30.0
+    trace_seconds: 30.0
+    # Ground truth from the plant, drawn as a dotted outline so the LiDAR
+    # error is visible instead of assumed. Leave "" on hardware.
+    truth_topic: "/payload/truth_pose"
+    show_icr: true
+
+
+# -----------------------------------------------------------------------------
+#  HARDWARE MIRROR -- not launched in sim, present so hardware_check can
+#  validate the full constraint chain (w_max <-> profile_velocity, gear
+#  ratios) against the same numbers the rig uses.
+# -----------------------------------------------------------------------------
+/robot1/swerve_steering:
+  ros__parameters:
+    module_names: ["swerve1", "swerve2"]
+    gear_ratio: 5.0
+    profile_velocity: 250.0        # -> w_max 1.2 rad/s
+
+/robot1/swerve_odrive_bridge:
+  ros__parameters:
+    steering_gear_ratio: 5.0
+    wheel_radius: 0.035
+
+/robot2/swerve_steering:
+  ros__parameters:
+    module_names: ["swerve1", "swerve2"]
+    gear_ratio: 5.0
+    profile_velocity: 250.0
+
+/robot2/swerve_odrive_bridge:
+  ros__parameters:
+    steering_gear_ratio: 5.0
+    wheel_radius: 0.035
+
+hardware_check:
+  ros__parameters:
+    robot_blocks: ["/robot1", "/robot2"]
+    geometry_tol: 1.0e-4
+    rate_tol: 1.0e-3
+    wheel_radius_warn: 0.1

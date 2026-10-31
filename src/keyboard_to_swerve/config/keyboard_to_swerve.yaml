@@ -1,0 +1,26 @@
+# Bench-testing teleop for ONE swerve robot.
+#
+# This node is not used during cooperative-transport experiments -- there the
+# commands come from swerve_cooptrans_bridge. Keep it for single-robot
+# bring-up: it is the quickest way to prove a robot's steering and drive
+# chain works before putting it under the controller.
+#
+# Run namespaced, same as the rest of the stack:
+#   ros2 run keyboard_to_swerve swerve_keyboard --ros-args \
+#     -r __ns:=/robot1 --params-file <this file>
+
+/**:
+  ros__parameters:
+    # Module base names. Must match `module_names` in
+    # swerve_test/config/swerve_steering.yaml -- that is what pairs each
+    # cmd_vel with the heading_angle feedback used for the shortest-path flip.
+    module_names: ["swerve1", "swerve2"]
+
+    # Module positions in the CHASSIS frame [m]. Both modules sit on the
+    # chassis y axis, 0.46 m apart (zero wheelbase, side-by-side pair).
+    module_offsets_x: [0.0, 0.0]
+    module_offsets_y: [0.23, -0.23]
+
+    # Added to each module's measured heading_angle before the shortest-path
+    # comparison. Use it to absorb a module mounted rotated on its hub.
+    module_angle_offsets: [0.0, 0.0]

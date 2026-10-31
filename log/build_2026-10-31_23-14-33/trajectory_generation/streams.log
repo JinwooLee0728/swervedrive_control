@@ -1,0 +1,57 @@
+[0.390s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/trajectory_generation -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation
+[0.427s] -- The C compiler identification is GNU 13.3.0
+[0.471s] -- The CXX compiler identification is GNU 13.3.0
+[0.482s] -- Detecting C compiler ABI info
+[0.538s] -- Detecting C compiler ABI info - done
+[0.543s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.543s] -- Detecting C compile features
+[0.543s] -- Detecting C compile features - done
+[0.548s] -- Detecting CXX compiler ABI info
+[0.614s] -- Detecting CXX compiler ABI info - done
+[0.622s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.623s] -- Detecting CXX compile features
+[0.623s] -- Detecting CXX compile features - done
+[0.626s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.726s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.766s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.793s] -- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.840s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.856s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.874s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.894s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.984s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.987s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.056s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.076s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.097s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.169s] -- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[1.189s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[1.253s] -- Configuring done (0.9s)
+[1.258s] -- Generating done (0.0s)
+[1.260s] -- Build files have been written to: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation
+[1.266s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/trajectory_generation -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation
+[1.266s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation -- -j28 -l28
+[1.305s] [ 50%] Building CXX object CMakeFiles/trajectory_generator.dir/src/trajectory_generator.cpp.o
+[9.761s] [100%] Linking CXX executable trajectory_generator
+[10.002s] [100%] Built target trajectory_generator
+[10.010s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation -- -j28 -l28
+[10.010s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation
+[10.016s] -- Install configuration: ""
+[10.016s] -- Execute custom install script
+[10.016s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/lib/trajectory_generation/trajectory_generator
+[10.023s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/ament_index/resource_index/package_run_dependencies/trajectory_generation
+[10.029s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/ament_index/resource_index/parent_prefix_path/trajectory_generation
+[10.033s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/ament_prefix_path.sh
+[10.040s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/ament_prefix_path.dsv
+[10.046s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/path.sh
+[10.051s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/environment/path.dsv
+[10.057s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.bash
+[10.061s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.sh
+[10.068s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.zsh
+[10.074s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/local_setup.dsv
+[10.080s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.dsv
+[10.085s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/ament_index/resource_index/packages/trajectory_generation
+[10.090s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/cmake/trajectory_generationConfig.cmake
+[10.096s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/cmake/trajectory_generationConfig-version.cmake
+[10.102s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/trajectory_generation/share/trajectory_generation/package.xml
+[10.110s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/trajectory_generation

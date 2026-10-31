@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>swerve_cooptrans_bridge</name>
+  <version>0.1.0</version>
+  <description>Bidirectional adapter between the cooptrans cooperative-transport
+  controller and one swerve robot's steering/drive hardware. Registers each
+  swerve module as a nonholonomic agent: converts the controller's world-frame
+  steering rate into a chassis-frame steer angle, and synthesises the per-agent
+  pose topic the controller expects from payload mocap plus steering encoders.
+  </description>
+  <maintainer email="jinwoolee0728@snu.ac.kr">Jinwoo Lee</maintainer>
+  <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-pyqtgraph</exec_depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

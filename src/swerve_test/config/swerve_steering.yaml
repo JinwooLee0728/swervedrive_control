@@ -1,0 +1,62 @@
+/**:
+  ros__parameters:
+    # Topic/joint base names for this robot's two modules. RELATIVE names:
+    # under namespace /robot1 these become /robot1/swerve1/cmd_vel etc.
+    # Keep them the same on every robot -- the namespace does the separating.
+    module_names: ["swerve1", "swerve2"]
+
+    port: "/dev/ttyUSB1"
+    baudrate: 57600
+    protocol_version: 2.0
+
+    # ============================================================
+    # SET BEFORE RUNNING: real Dynamixel IDs for the two steering
+    # motors. Order is [swerve1_steer, swerve2_steer].
+    # Discover with Dynamixel Wizard 2.0 or an SDK ping scan.
+    # The node refuses to start while these are 0.
+    # ============================================================
+    dxl_ids: [1, 3]
+
+    # 4 = Extended Position (multi-turn safe; no wrap-around glitch).
+    operating_mode: 4
+
+    # Motion profile applied to goal-position moves.
+    profile: "Trapezoidal"
+
+    # profile_velocity SETS THE CONTROLLER'S w_max. Unit is 0.229 rev/min at
+    # the motor, so the module's max steering rate is
+    #     w_max [rad/s] = profile_velocity * 0.229 * 2*pi / (60 * gear_ratio)
+    # With gear_ratio 5.0:   100 -> 0.48 rad/s      250 -> 1.20 rad/s
+    #
+    # Measured in simulation (proposed controller, 4 modules, 40 s runs,
+    # payload position error vs reference; slip was 0.00000 in every case):
+    #     w_max 0.48 -> 0.104 m     w_max 1.2 -> 0.030 m
+    #     w_max 0.80 -> 0.060 m     w_max 3.0 -> 0.010 m
+    # i.e. steering rate is the binding constraint on tracking. Controller
+    # gains are NOT: sweeping k_theta 15->3 moved the error by <0.001 m.
+    #
+    # 250 was chosen to match controller w_max: 1.2 in params.yaml. VERIFY it
+    # is within your servo's Velocity Limit (EEPROM addr 44) -- on a stock
+    # XM430-W350 that limit is ~265 in the same units, so 250 is near the top.
+    # If your servo cannot sustain it, lower BOTH this and w_max together.
+    profile_velocity: 250.0
+    profile_acceleration: 10.0
+
+    # Steering reduction: 5 motor revolutions per 1 module revolution (5:1).
+    gear_ratio: 5.0
+
+    # Raw motor units that correspond to "module pointing forward
+    # (along robot +x)". Capture once on the bench by reading
+    # present_position with each module manually aligned, then paste here.
+    zero_offset_unit: [2048, 2048]
+
+    # Flip sign per module if +rad heading command rotates the module
+    # clockwise (viewed from above) instead of counter-clockwise.
+    invert: [false, false]
+
+    # On startup, treat each wheel's current physical position as "module = 0
+    # (forward)" by snapshotting present_position into zero_offset_unit on
+    # first read. With this on, you align the wheels by hand before launch
+    # and the controller doesn't move them until the keyboard publishes its
+    # first cmd_vel. Set to false to use the literal zero_offset_unit above.
+    assume_forward_on_startup: true

@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can/rosidl_generator_py/odrive_can/odrive_can_s__rosidl_typesupport_fastrtps_c.so" "TARGETS" "odrive_can_s__rosidl_typesupport_fastrtps_c" "DESTINATION" "lib/python3.12/site-packages/odrive_can")

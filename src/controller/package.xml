@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>controller</name>
+  <version>0.0.1</version>
+  <description>Controller node with selectable control law (proposed + baselines)
+    VENDORED into swdr_ws so this workspace is self-contained and a robot NUC needs no other checkout. The original lives in cooptrans_ws (the RA-L / TurtleBot workspace); THIS copy is the swerve variant and is the one the swerve launches use. Edit this one for swerve work -- changes here do NOT propagate to cooptrans_ws, and vice versa.
+  </description>
+  <maintainer email="jinwoolee@todo.todo">jinwoolee</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>eigen</depend>
+
+  <export><build_type>ament_cmake</build_type></export>
+</package>

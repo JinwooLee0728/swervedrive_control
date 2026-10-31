@@ -1,0 +1,27 @@
+[0.771s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/build --no-deps symlink_data
+[0.965s] running develop
+[1.086s] running egg_info
+[1.086s] creating keyboard_to_swerve.egg-info
+[1.098s] writing keyboard_to_swerve.egg-info/PKG-INFO
+[1.099s] writing dependency_links to keyboard_to_swerve.egg-info/dependency_links.txt
+[1.099s] writing entry points to keyboard_to_swerve.egg-info/entry_points.txt
+[1.099s] writing requirements to keyboard_to_swerve.egg-info/requires.txt
+[1.099s] writing top-level names to keyboard_to_swerve.egg-info/top_level.txt
+[1.099s] writing manifest file 'keyboard_to_swerve.egg-info/SOURCES.txt'
+[1.127s] reading manifest file 'keyboard_to_swerve.egg-info/SOURCES.txt'
+[1.127s] writing manifest file 'keyboard_to_swerve.egg-info/SOURCES.txt'
+[1.137s] running build_ext
+[1.137s] Creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/python3.12/site-packages/keyboard-to-swerve.egg-link (link to .)
+[1.137s] Installing swerve_keyboard script to /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/keyboard_to_swerve
+[1.137s] Installing talker script to /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/keyboard_to_swerve
+[1.137s] 
+[1.137s] Installed /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve
+[1.138s] running symlink_data
+[1.138s] creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/ament_index
+[1.138s] creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/ament_index/resource_index
+[1.138s] creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/ament_index/resource_index/packages
+[1.138s] symbolically linking /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/resource/keyboard_to_swerve -> /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/ament_index/resource_index/packages
+[1.138s] symbolically linking /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/package.xml -> /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve
+[1.138s] creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/config
+[1.138s] symbolically linking /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/config/keyboard_to_swerve.yaml -> /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/share/keyboard_to_swerve/config
+[1.161s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/keyboard_to_swerve/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/keyboard_to_swerve/build --no-deps symlink_data

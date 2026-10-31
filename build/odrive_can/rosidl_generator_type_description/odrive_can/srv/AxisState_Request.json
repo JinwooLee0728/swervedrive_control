@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "odrive_can/srv/AxisState_Request",
+      "fields": [
+        {
+          "name": "axis_requested_state",
+          "type": {
+            "type_id": 7,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "odrive_can/srv/AxisState_Request",
+      "hash_string": "RIHS01_4ea2e2c2f6614f32e0a47fced8c2fa55aebb9e1d65589f1d19134235f05f5879"
+    }
+  ]
+}

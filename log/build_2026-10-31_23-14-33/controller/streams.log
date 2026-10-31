@@ -1,0 +1,63 @@
+[0.012s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller
+[0.398s] -- The C compiler identification is GNU 13.3.0
+[0.398s] -- The CXX compiler identification is GNU 13.3.0
+[0.398s] -- Detecting C compiler ABI info
+[0.398s] -- Detecting C compiler ABI info - done
+[0.398s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.398s] -- Detecting C compile features
+[0.398s] -- Detecting C compile features - done
+[0.398s] -- Detecting CXX compiler ABI info
+[0.398s] -- Detecting CXX compiler ABI info - done
+[0.398s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.398s] -- Detecting CXX compile features
+[0.398s] -- Detecting CXX compile features - done
+[0.398s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.398s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.398s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.398s] -- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.421s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.430s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.441s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.452s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.498s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.500s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.556s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.576s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[0.595s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.639s] -- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.658s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[0.749s] -- Configuring done (0.7s)
+[0.755s] -- Generating done (0.0s)
+[0.756s] -- Build files have been written to: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller
+[0.763s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller
+[0.763s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller -- -j28 -l28
+[0.800s] [ 37%] Building CXX object CMakeFiles/controller_node.dir/src/proposed.cpp.o
+[0.800s] [ 37%] Building CXX object CMakeFiles/controller_node.dir/src/kanayama.cpp.o
+[0.800s] [ 37%] Building CXX object CMakeFiles/controller_node.dir/src/peng.cpp.o
+[0.801s] [ 62%] Building CXX object CMakeFiles/controller_node.dir/src/controller_node.cpp.o
+[0.801s] [ 62%] Building CXX object CMakeFiles/controller_node.dir/src/controller_factory.cpp.o
+[0.801s] [ 75%] Building CXX object CMakeFiles/controller_node.dir/src/li.cpp.o
+[0.802s] [ 87%] Building CXX object CMakeFiles/controller_node.dir/src/muhamed.cpp.o
+[13.122s] [100%] Linking CXX executable controller_node
+[13.561s] [100%] Built target controller_node
+[13.571s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller -- -j28 -l28
+[13.572s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller
+[13.577s] -- Install configuration: ""
+[13.577s] -- Execute custom install script
+[13.577s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/lib/controller/controller_node
+[13.583s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/ament_index/resource_index/package_run_dependencies/controller
+[13.590s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/ament_index/resource_index/parent_prefix_path/controller
+[13.596s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/environment/ament_prefix_path.sh
+[13.603s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/environment/ament_prefix_path.dsv
+[13.608s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/environment/path.sh
+[13.616s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/environment/path.dsv
+[13.622s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/local_setup.bash
+[13.629s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/local_setup.sh
+[13.635s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/local_setup.zsh
+[13.642s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/local_setup.dsv
+[13.649s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.dsv
+[13.656s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/ament_index/resource_index/packages/controller
+[13.664s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/cmake/controllerConfig.cmake
+[13.671s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/cmake/controllerConfig-version.cmake
+[13.677s] -- Symlinking: /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/controller/share/controller/package.xml
+[13.686s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/controller

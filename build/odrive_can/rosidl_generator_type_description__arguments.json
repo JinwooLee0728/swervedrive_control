@@ -1,0 +1,14 @@
+{
+  "package_name": "odrive_can",
+  "output_dir": "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can/rosidl_generator_type_description/odrive_can",
+  "idl_tuples": [
+    "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can/rosidl_adapter/odrive_can:msg/ControlMessage.idl",
+    "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can/rosidl_adapter/odrive_can:msg/ControllerStatus.idl",
+    "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can/rosidl_adapter/odrive_can:msg/ODriveStatus.idl",
+    "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can/rosidl_adapter/odrive_can:srv/AxisState.idl"
+  ],
+  "include_paths": [
+    "service_msgs:/opt/ros/jazzy/share/service_msgs",
+    "builtin_interfaces:/opt/ros/jazzy/share/builtin_interfaces"
+  ]
+}

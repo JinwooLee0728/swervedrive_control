@@ -1,0 +1,7 @@
+[console_scripts]
+hardware_check = swerve_cooptrans_bridge.hardware_check:main
+lidar_pose_adapter = swerve_cooptrans_bridge.lidar_pose_adapter:main
+lidar_sim = swerve_cooptrans_bridge.lidar_sim:main
+module_bridge = swerve_cooptrans_bridge.module_bridge:main
+sim_planner = swerve_cooptrans_bridge.sim_planner:main
+swerve_viz = swerve_cooptrans_bridge.swerve_viz:main

@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-e49c1f72b5674ef3a418.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "swerve_odrive_bridge",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "swerve_odrive_bridge::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-swerve_odrive_bridge-9d2217006c9cf0a9658d.json",
+					"name" : "swerve_odrive_bridge",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "swerve_odrive_bridge_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-swerve_odrive_bridge_uninstall-64d7aeb8489cd4d64956.json",
+					"name" : "swerve_odrive_bridge_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-eb7752473fccee452938.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/swerve_odrive_bridge",
+		"source" : "/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/src/swerve_odrive_bridge"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

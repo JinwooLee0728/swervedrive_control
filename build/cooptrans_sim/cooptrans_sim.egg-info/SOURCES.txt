@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+cooptrans_sim/__init__.py
+cooptrans_sim/kinematic_plant.py
+cooptrans_sim.egg-info/PKG-INFO
+cooptrans_sim.egg-info/SOURCES.txt
+cooptrans_sim.egg-info/dependency_links.txt
+cooptrans_sim.egg-info/entry_points.txt
+cooptrans_sim.egg-info/requires.txt
+cooptrans_sim.egg-info/top_level.txt
+cooptrans_sim.egg-info/zip-safe
+resource/cooptrans_sim

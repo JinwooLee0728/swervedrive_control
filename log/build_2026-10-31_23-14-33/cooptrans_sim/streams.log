@@ -1,0 +1,24 @@
+[0.736s] Invoking command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/build --no-deps symlink_data
+[0.927s] running develop
+[1.051s] running egg_info
+[1.051s] creating cooptrans_sim.egg-info
+[1.063s] writing cooptrans_sim.egg-info/PKG-INFO
+[1.063s] writing dependency_links to cooptrans_sim.egg-info/dependency_links.txt
+[1.064s] writing entry points to cooptrans_sim.egg-info/entry_points.txt
+[1.064s] writing requirements to cooptrans_sim.egg-info/requires.txt
+[1.064s] writing top-level names to cooptrans_sim.egg-info/top_level.txt
+[1.064s] writing manifest file 'cooptrans_sim.egg-info/SOURCES.txt'
+[1.088s] reading manifest file 'cooptrans_sim.egg-info/SOURCES.txt'
+[1.088s] writing manifest file 'cooptrans_sim.egg-info/SOURCES.txt'
+[1.101s] running build_ext
+[1.101s] Creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/python3.12/site-packages/cooptrans-sim.egg-link (link to .)
+[1.102s] Installing kinematic_plant script to /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/cooptrans_sim
+[1.102s] 
+[1.102s] Installed /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim
+[1.102s] running symlink_data
+[1.102s] creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/ament_index
+[1.102s] creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/ament_index/resource_index
+[1.102s] creating /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/ament_index/resource_index/packages
+[1.102s] symbolically linking /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/resource/cooptrans_sim -> /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/ament_index/resource_index/packages
+[1.102s] symbolically linking /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/package.xml -> /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/share/cooptrans_sim
+[1.122s] Invoked command in '/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/install/cooptrans_sim/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/cooptrans_sim/build --no-deps symlink_data
