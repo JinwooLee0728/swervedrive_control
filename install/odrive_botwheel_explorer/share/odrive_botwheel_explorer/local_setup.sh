@@ -1,1 +1,0 @@
-/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_botwheel_explorer/ament_cmake_environment_hooks/local_setup.sh

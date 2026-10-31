@@ -106,6 +106,10 @@ public:
       odrive_pubs_[i] = create_publisher<ControlMessage>(ns[i] + "/control_message", 10);
       clear_clients_[i] = create_client<Empty>(ns[i] + "/clear_errors");
       state_clients_[i] = create_client<AxisState>(ns[i] + "/request_axis_state");
+      // Keep the FULLY-RESOLVED topic name so diagnostics can report where
+      // this bridge is actually looking, namespace included. The parameters
+      // are relative, so the resolved name is the only useful thing to print.
+      odrive_ns_resolved_[i] = odrive_pubs_[i]->get_topic_name();
     }
 
     swerve_subs_[0] = create_subscription<geometry_msgs::msg::TwistStamped>(
@@ -132,6 +136,12 @@ public:
     target_input_vel_[1] = 0.0f;
     compensation_drive_revps_[0] = 0.0f;
     compensation_drive_revps_[1] = 0.0f;
+  }
+
+  // Fully-resolved "<ns>/control_message" for axis i, for diagnostics.
+  std::string resolvedOdriveNamespace(int i) const
+  {
+    return (i >= 0 && i < 2) ? odrive_ns_resolved_[i] : std::string("<bad index>");
   }
 
   // Synchronous arming: clear_errors then request_axis_state(8) on each axis.
@@ -280,6 +290,7 @@ private:
   std::array<std::atomic<float>, 2> compensation_drive_revps_;
 
   std::array<rclcpp::Publisher<ControlMessage>::SharedPtr, 2> odrive_pubs_;
+  std::array<std::string, 2> odrive_ns_resolved_;
   std::array<rclcpp::Subscription<geometry_msgs::msg::TwistStamped>::SharedPtr, 2> swerve_subs_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr steering_state_sub_;
   std::array<rclcpp::Client<Empty>::SharedPtr, 2> clear_clients_;
@@ -292,9 +303,17 @@ int main(int argc, char ** argv)
   rclcpp::init(argc, argv);
   auto node = std::make_shared<SwerveOdriveBridge>();
   if (!node->armOdrives()) {
+    // Print the RESOLVED namespaces, not a hardcoded guess. The parameters
+    // are relative now, so what matters is where they land under this node's
+    // namespace (e.g. /robot1/odrive_axis0) -- naming a stale absolute
+    // default here would send you looking in the wrong place.
     RCLCPP_FATAL(node->get_logger(),
-      "Auto-arm failed; shutting down. Check ODrive nodes are running on the "
-      "configured namespaces (default /odrive_axis0, /odrive_axis1).");
+      "Auto-arm failed; shutting down. Check that odrive_can_node is running "
+      "and reachable at '%s' and '%s' (resolved from this node's namespace "
+      "'%s'), that can0 is up, and that the ODrive node_ids match.",
+      node->resolvedOdriveNamespace(0).c_str(),
+      node->resolvedOdriveNamespace(1).c_str(),
+      node->get_namespace());
     rclcpp::shutdown();
     return 1;
   }
