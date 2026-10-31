@@ -1,1 +1,0 @@
-/home/jinwoolee/Desktop/swervedrive_prj_26/swdr_ws/build/odrive_can/rosidl_typesupport_introspection_c/odrive_can/msg/detail/controller_status__rosidl_typesupport_introspection_c.h

@@ -1,6 +1,0 @@
-source;share/cooptrans_sim/hook/pythonpath.dsv
-source;share/cooptrans_sim/hook/pythonpath.sh
-source;share/cooptrans_sim/hook/ament_prefix_path.dsv
-source;share/cooptrans_sim/hook/ament_prefix_path.sh
-source;../../build/cooptrans_sim/share/cooptrans_sim/hook/pythonpath_develop.dsv
-source;../../build/cooptrans_sim/share/cooptrans_sim/hook/pythonpath_develop.sh

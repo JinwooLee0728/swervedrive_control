@@ -1,6 +1,0 @@
-source;share/swerve_cooptrans_bridge/hook/pythonpath.dsv
-source;share/swerve_cooptrans_bridge/hook/pythonpath.sh
-source;share/swerve_cooptrans_bridge/hook/ament_prefix_path.dsv
-source;share/swerve_cooptrans_bridge/hook/ament_prefix_path.sh
-source;../../build/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/pythonpath_develop.dsv
-source;../../build/swerve_cooptrans_bridge/share/swerve_cooptrans_bridge/hook/pythonpath_develop.sh
