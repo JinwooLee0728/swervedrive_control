@@ -219,6 +219,37 @@ If NUC1, the network or the teleop dies, each robot's bridge times out after
 `cmd_timeout` (0.2 s), stops its wheels and **holds** steering. This runs
 locally on each NUC and does not depend on hearing from the other machine.
 
+### Running from a laptop
+
+No monitor on the NUCs is needed. Put the laptop on the same subnet and use
+the same network variables as above.
+
+**Teleop over SSH.** `payload_keyboard` is a terminal program, so it runs over
+SSH. Use `-t`, because it refuses to start without a TTY:
+
+```bash
+ssh -t -o ServerAliveInterval=1 -o ServerAliveCountMax=2 user@nuc1
+ros2 run keyboard_to_swerve payload_keyboard
+```
+
+> ⚠ The bridge watchdogs do not cover the laptop–NUC1 link. If Wi-Fi freezes,
+> a hung SSH session leaves the teleop running on NUC1, still publishing your
+> last command. The `ServerAlive` options close a dead session, and the teleop
+> with it, within about 2 s. Do **not** run the teleop inside `tmux` or
+> `screen`, which keep it alive after SSH drops.
+
+**Teleop on the laptop.** Alternatively, build and source this workspace on
+the laptop and run `payload_keyboard` there. A Wi-Fi loss then stops the
+wheels within `cmd_timeout`. The cost: commands and module feedback both go
+over Wi-Fi, so a poor link can trip the watchdog and make the wheels stutter.
+
+**GUI.** Run `swerve_viz` on the laptop, not over `ssh -X` (pyqtgraph is slow
+over X11). It only subscribes, so it is always safe:
+
+```bash
+ros2 run swerve_cooptrans_bridge swerve_viz
+```
+
 ---
 
 ## Keyboard teleop
