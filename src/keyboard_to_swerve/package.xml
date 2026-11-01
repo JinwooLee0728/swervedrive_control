@@ -3,9 +3,9 @@
 <package format="3">
   <name>keyboard_to_swerve</name>
   <version>0.0.0</version>
-  <description>Keyboard teleop for a single 2-module swerve robot. Bench
-  bring-up tool; cooperative-transport runs use swerve_cooptrans_bridge
-  instead.</description>
+  <description>Keyboard teleop. swerve_keyboard: one 2-module swerve robot
+  (bench bring-up). payload_keyboard: both robots bolted to the payload,
+  driven as one rigid body through swerve_cooptrans_bridge.</description>
   <maintainer email="dbys34@gmail.com">yyj</maintainer>
   <license>Apache-2.0</license>
 
@@ -13,6 +13,12 @@
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>swerve_cooptrans_bridge</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>cooptrans_sim</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
