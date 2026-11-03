@@ -48,9 +48,10 @@ stalled module), the wheel speed is attenuated. Without this, a lagging module
 drives in the wrong direction and injects exactly the slip the controller is
 designed to avoid. See `attenuate_on_heading_error`.
 
-NOTE ON THE PI-FLIP: `rigidBody()` in proposed.cpp already picks the nearer of
-the two ICR-perpendicular headings. Do NOT re-apply the keyboard node's flip
-here -- a second flip fights the controller.
+NOTE ON HEADING DIRECTION: `rigidBody()` in proposed.cpp is forward-only --
+it picks the ICR-perpendicular heading along the module's direction of travel,
+so the wheel speed it sends is never negative. Do NOT add a pi-flip with speed
+negation here; it reintroduces the random direction reversals.
 """
 
 import math

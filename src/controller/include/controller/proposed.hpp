@@ -31,6 +31,7 @@ class Proposed : public ControllerBase {
   ControllerConfig cfg_;
   Eigen::Matrix3d K0_, K1_;
   double lambda0_, delta_sig_, k_null_, eps_icr_;
+  double eps_v_fwd_;   // below this module speed [m/s], heading direction is undefined
   double gamma_v_, k_theta_, beta_theta_, sgn_smooth_;
   bool direct_steering_ = true;   // swerve: command th_des, skip eq. 22-23
   double eta0_, psi0_, V0_;

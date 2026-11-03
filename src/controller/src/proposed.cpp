@@ -2,6 +2,7 @@
 
 #include "controller/proposed.hpp"
 
+#include <algorithm>
 #include <cmath>
 
 using Eigen::Matrix2d;
@@ -27,6 +28,7 @@ Proposed::Proposed(rclcpp::Node* node, const ControllerConfig& cfg) : cfg_(cfg) 
   delta_sig_  = node->declare_parameter<double>("proposed.delta_sig", 0.05);
   k_null_     = node->declare_parameter<double>("proposed.k_null", 0.1);
   eps_icr_    = node->declare_parameter<double>("proposed.eps_icr", 0.01);
+  eps_v_fwd_  = node->declare_parameter<double>("proposed.eps_v_fwd", 1e-3);
   gamma_v_    = node->declare_parameter<double>("proposed.gamma_v", 10.0);
   k_theta_    = node->declare_parameter<double>("proposed.k_theta", 1.0);
   beta_theta_ = node->declare_parameter<double>("proposed.beta_theta", 0.2);
@@ -136,13 +138,27 @@ void Proposed::rigidBody(const ControllerInput& in, double de, double dpsi,
       Matrix2d Q = (1.0 / nv2) * (M * M);
       const double phi = 0.5 * std::atan2(Q(1, 0), Q(0, 0));
       const double th1 = phi + M_PI / 2.0 + th, th2 = phi - M_PI / 2.0 + th;
-      const double d1 = std::abs(wrap(th1 - in.theta_arr[i]));
-      const double d2 = std::abs(wrap(th2 - in.theta_arr[i]));
-      const double td = wrap((d1 <= d2) ? th1 : th2);
+      const Vector2d dot_p_robot = Vector2d(dot_x, dot_y) + dot_theta * (Rp2 * Rth * r);  // eq.10
+
+      // FORWARD-ONLY: of the two ICR-perpendicular headings, take the one the
+      // module is actually travelling along, so the wheel speed is never
+      // negative. No pi-flip with speed negation (it caused random direction
+      // reversals on hardware, same as the old keyboard flip). Only when the
+      // module velocity is ~0 is the direction undefined; then hold the branch
+      // nearer the measured heading so the steering does not swing for nothing.
+      double td;
+      if (dot_p_robot.norm() > eps_v_fwd_) {
+        const double proj1 = std::cos(th1) * dot_p_robot(0) + std::sin(th1) * dot_p_robot(1);
+        td = wrap((proj1 >= 0.0) ? th1 : th2);
+      } else {
+        const double d1 = std::abs(wrap(th1 - in.theta_arr[i]));
+        const double d2 = std::abs(wrap(th2 - in.theta_arr[i]));
+        td = wrap((d1 <= d2) ? th1 : th2);
+      }
       th_des[i] = td;
 
-      const Vector2d dot_p_robot = Vector2d(dot_x, dot_y) + dot_theta * (Rp2 * Rth * r);  // eq.10
-      v_des[i] = std::cos(td) * dot_p_robot(0) + std::sin(td) * dot_p_robot(1);           // eq.11
+      v_des[i] = std::max(0.0, std::cos(td) * dot_p_robot(0)
+                                + std::sin(td) * dot_p_robot(1));                         // eq.11
 
       const Vector2d dot_vect = (1.0 / (2.0 * ce * ce)) * (Rpsi * e2) * de
                               + std::tan(eta / 2.0) * (Rpsi * Rp2 * e2) * dpsi;           // r_tilde_dot
