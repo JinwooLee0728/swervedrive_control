@@ -282,8 +282,12 @@ conversion and the speed clamp.
 
 - The whole twist is scaled down when any module would exceed `v_max`, which
   keeps the centre of rotation.
-- No 180° flip: each wheel always points along its direction of travel and
-  never runs in reverse; a big direction change is done by steering.
+- Paper eq. 8–9, same as the controller: of the two equivalent wheel headings
+  (h forward / h + 180° backward) each module takes the one nearer its
+  measured heading, and the wheel speed is signed. So `x` after `w` (or `d`
+  after `a`, `e` after `q`) just spins the wheels the other way; a 90° change
+  steers 90°. Wheels may end up pointing backward and running in reverse,
+  which is kinematically identical.
 - The sent twist ramps at `max_accel`, so a new direction sweeps each wheel's
   velocity across instead of reversing it (`s` still stops at once).
 - Wheels wait until every module's commanded and measured heading are within `align_window` of its
@@ -303,6 +307,7 @@ conversion and the speed clamp.
 | `heading_error_stop` | 0.5 rad | above this steering error, all wheels stop |
 | `max_heading_rate` | 0.8 rad/s | max slew of each module's commanded heading; keep below the REAL steering rate (robot1 measured 0.90–0.95 rad/s under load, although `profile_velocity` 250 predicts ~1.2). 0 disables |
 | `max_accel` | 0.15 m/s² | ramp of the sent twist (max change of any module velocity vector); `s` and quit bypass it. 0 disables |
+| `branch_hysteresis` | 0.2 rad | eq. 8 switch margin: change to the other heading only if it is this much nearer the measured heading (same as `proposed.branch_hysteresis`; 0 = eq. 8 exactly) |
 | `align_window` | 0.5 rad | wheels held at 0 until every moving module's commanded AND measured heading are within this of its target, full speed at 0. 0 disables |
 | `agents` | all | subset of agents to drive, e.g. `"[module1, module2]"` for robot 1 alone |
 | `rate_hz` | 50 | publish rate (bridge timeout is 0.2 s) |
@@ -539,6 +544,23 @@ because the servo cannot meet the slew demand. The bridge's local
 `attenuate_on_heading_error` guards against this: with direct steering the
 controller assumes e_θ ≈ 0, so the bridge bleeds off wheel speed when the
 measured heading lags, and stops outright past `heading_error_stop`.
+
+### Heading branch and wheel direction (eq. 8–9)
+
+`rigidBody()` follows the paper: of the two ICR-perpendicular headings
+θ + φ ± π/2, it takes the one nearer the measured module heading (eq. 8), and
+the wheel speed v_d = ṗ_dᵀ t(θ_d) is signed (eq. 9). A module whose travel
+reverses rolls backward on the same axis instead of steering 180°, so θ_d
+stays continuous. The only addition is `proposed.branch_hysteresis` (0.2 rad;
+0 gives eq. 8 exactly), which keeps a module about 90° from both candidates
+from switching on encoder noise. `payload_keyboard` uses the same rule.
+
+An earlier "forward-only" version hid a hardware fault: robot1's ODrive axes
+were cross-wired between the left and right wheels, which only shows once the
+two wheels of a robot need opposite spins. Bench-test each robot's wiring
+before trusting signed speeds: with wheels lifted and `robot.launch.py
+use_bridge:=false`, publish to one `/robotN/swerveM/cmd_vel` and check that
+the SAME wheel both steers and spins.
 
 ### Only `proposed` runs on hardware
 

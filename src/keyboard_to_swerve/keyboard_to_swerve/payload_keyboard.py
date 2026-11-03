@@ -45,16 +45,19 @@ in the payload BODY frame: "w" always means "payload +x".
 SAFETY BEHAVIOUR
 ----------------
 - Twist is scaled uniformly (preserving the ICR) so no module exceeds v_max.
-- No pi-flip: every module points along its direction of travel and its wheel
-  speed is never negative. A direction change of up to 180 deg is done by
-  steering (wheels held still meanwhile, see `align_window`), never by
-  reversing the wheel.
+- Paper eq. (8)-(9), same rule as the controller: of a module's two
+  equivalent headings (h, +speed) / (h + 180 deg, -speed) it takes the one
+  nearer its MEASURED heading, and the wheel speed is signed. A reversal (x
+  after w, d after a, e after q) therefore just reverses the wheels with no
+  steering; a 90 deg change steers 90 deg (wheels held meanwhile, see
+  `align_window`). `branch_hysteresis` stops a wheel ~90 deg from both
+  candidates from flip-flopping on encoder noise.
 - Each module's commanded heading slews toward its target at no more than
   `max_heading_rate`, so a key press cannot jump the command 90 deg ahead of a
   servo that turns at ~1.2 rad/s.
 - The twist actually sent ramps toward the keyboard twist at `max_accel`
-  (per-module velocity vector, m/s^2), so a new direction is reached by
-  sweeping each wheel's velocity across, not by reversing its spin. The stop
+  (per-module velocity vector, m/s^2), so every wheel's velocity changes
+  smoothly (a reversal slows the wheel through zero, then spins it back). The stop
   key and quitting bypass the ramp.
 - While a commanded heading slews, all wheels are held back until every moving
   module is within `align_window` of its target heading (smoothly to full speed
@@ -193,6 +196,10 @@ class PayloadTeleop:
         # full speed at 0 (see _step). 0 disables (drive full speed along the
         # slewing heading).
         self.align_window = float(p('align_window', 0.5).value)
+        # Eq. (8) branch hysteresis [rad], same as proposed.branch_hysteresis
+        # in the controller: keep the current heading branch unless the other
+        # is nearer the measured heading by more than this. 0 = eq. 8 exactly.
+        self.branch_hyst = float(p('branch_hysteresis', 0.2).value)
 
         r_max = max(math.hypot(x, y) for x, y in zip(self.r_x, self.r_y))
         self.v_max = self.v_mod_max
@@ -268,6 +275,32 @@ class PayloadTeleop:
             out.append((s, math.atan2(my, mx) if s > 1e-4 else None))
         return out
 
+    def _choose_direction(self, i, h, s, m_pf):
+        """Paper eq. (8)-(9) -> (heading, SIGNED speed) for module i.
+
+        (h, s) and (h + pi, -s) give the same module velocity. Eq. (8) takes
+        the heading nearer the MEASURED module heading m_pf; the speed is then
+        the signed projection (eq. 9). So a reversal (x after w, d after a, e
+        after q) keeps the wheel's axis and just reverses its spin.
+
+        Hysteresis (not in the paper, same as proposed.cpp): "the branch used
+        last tick" is the candidate nearer the previous target; switch only if
+        the other is nearer the measured heading by more than branch_hyst, so
+        a wheel ~90 deg from both cannot flip-flop on encoder noise.
+        """
+        a, b = (h, s), (wrap(h + math.pi), -s)
+        ref = m_pf if m_pf is not None else self.head_cmd[i]
+        prev = self.head_tgt[i]
+        if ref is None:
+            return a
+        if prev is None:
+            return a if abs(wrap(a[0] - ref)) <= abs(wrap(b[0] - ref)) else b
+        same, other = ((a, b) if abs(wrap(a[0] - prev)) <= abs(wrap(b[0] - prev))
+                       else (b, a))
+        if abs(wrap(other[0] - ref)) + self.branch_hyst < abs(wrap(same[0] - ref)):
+            return other
+        return same
+
     def _step(self):
         now = self.node.get_clock().now()
         with self.lock:
@@ -302,9 +335,8 @@ class PayloadTeleop:
         # straight line in twist space, scaled so no module's velocity vector
         # changes faster than max_accel. Module velocities are linear in the
         # twist, so every wheel's velocity vector also moves along a straight
-        # line: a change of travel direction sweeps the direction across
-        # instead of flipping the wheel's spin, and every module stays on the
-        # same ICR throughout.
+        # line (through zero for a reversal, which _choose_direction turns into
+        # a spin reversal), and every module stays on the same ICR throughout.
         # Under the lock: the stop key resets the ramp from the keyboard thread.
         with self.lock:
             vx, vy, wz = self.vx, self.vy, self.wz
@@ -341,8 +373,8 @@ class PayloadTeleop:
                 # No motion for this module: hold the heading it already has.
                 h = self.head_cmd[i] if self.head_cmd[i] is not None else 0.0
                 s = 0.0
-            # No pi-flip: the module always points along its direction of
-            # travel and the wheel speed is never negative (s = |v_k| >= 0).
+            else:
+                h, s = self._choose_direction(i, h, s, m_pf)
             self.head_tgt[i] = h
 
             # Slew the commanded heading toward the target, shortest way.

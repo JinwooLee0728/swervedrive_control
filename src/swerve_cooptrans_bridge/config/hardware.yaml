@@ -52,7 +52,7 @@ controller:
     # each chassis is bolted. hardware_check verifies these equal
     #     mount + R(mount_angle) * module_offset
     # from the bridge blocks, so the two descriptions cannot drift apart.
-    r_x: [1.075, 1.075, -1.075, -1.075]
+    r_x: [1.015, 1.015, -1.015, -1.015]
     r_y: [-0.23, 0.23, 0.23, -0.23]
 
     # ---- ACTUATOR ENVELOPE ------------------------------------------------
@@ -214,8 +214,13 @@ trajectory_generator:
   ros__parameters:
     swerve1_topic: "swerve1/cmd_vel"
     swerve2_topic: "swerve2/cmd_vel"
-    odrive1_namespace: "odrive_axis0"
-    odrive2_namespace: "odrive_axis1"
+    # SWAPPED on robot1 (bench test 2026-11-03): ODrive axis0 (node 0) drives
+    # the LEFT wheel (swerve2) and axis1 (node 1) the RIGHT wheel (swerve1),
+    # while steering ID 1 is right / ID 3 is left as configured. Invisible with
+    # forward-only teleop (both wheels always got equal speeds); exposed once
+    # the two wheels of a robot need opposite spins.
+    odrive1_namespace: "odrive_axis1"
+    odrive2_namespace: "odrive_axis0"
     # 70 mm diameter wheel (confirmed 2026-11-01). Scales every wheel command
     # linearly; hardware_check warns above 0.1.
     wheel_radius: 0.035
