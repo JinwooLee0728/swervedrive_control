@@ -12,12 +12,8 @@
     odrive2_namespace: "odrive_axis1"
 
     # Drive geometry.
-    # !! VERIFY wheel_radius ON THE RIG BEFORE ANY POWERED RUN !!
-    # 0.35 m is a 0.7 m diameter wheel, which is larger than the 0.46 m module
-    # track and larger than the payload's short side. If the real wheel is
-    # 70 mm diameter this should be 0.035, and every wheel command is
-    # currently scaled 10x wrong.
-    wheel_radius: 0.35        # m
+    # 70 mm diameter wheel (confirmed 2026-11-01).
+    wheel_radius: 0.035       # m
     drive_gear_ratio: 6.0     # 6 motor rev per 1 wheel rev
 
     # Flip per-axis if wheel rolls backward on +linear.x.

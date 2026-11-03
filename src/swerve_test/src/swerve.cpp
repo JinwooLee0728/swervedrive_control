@@ -1,15 +1,101 @@
 #include "swerve_test/swerve.hpp"
 
+#include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <filesystem>
+#include <set>
 #include <stdexcept>
 #include <string>
 #include <vector>
+
+#include "dynamixel_sdk/dynamixel_sdk.h"
 
 using namespace std::chrono_literals;
 
 namespace
 {
+// Serial ports that could hold the Dynamixel bus. Stable /dev/serial/by-id
+// names first (FTDI before others: the U2D2 is FTDI, the stepper's Nano is
+// CH340), then any raw ttyUSB/ttyACM not already covered. Deduped by target.
+std::vector<std::string> candidatePorts()
+{
+  namespace fs = std::filesystem;
+  std::vector<std::string> ftdi, other, raw;
+  std::set<std::string> seen;
+  std::error_code ec;
+  const fs::path by_id("/dev/serial/by-id");
+  if (fs::is_directory(by_id, ec)) {
+    for (const auto & e : fs::directory_iterator(by_id, ec)) {
+      const std::string p = e.path().string();
+      seen.insert(fs::canonical(e.path(), ec).string());
+      (p.find("FTDI") != std::string::npos ? ftdi : other).push_back(p);
+    }
+  }
+  for (const auto & e : fs::directory_iterator("/dev", ec)) {
+    const std::string name = e.path().filename().string();
+    if (name.rfind("ttyUSB", 0) != 0 && name.rfind("ttyACM", 0) != 0) continue;
+    if (seen.count(e.path().string())) continue;
+    raw.push_back(e.path().string());
+  }
+  std::sort(ftdi.begin(), ftdi.end());
+  std::sort(other.begin(), other.end());
+  std::sort(raw.begin(), raw.end());
+  std::vector<std::string> out = ftdi;
+  out.insert(out.end(), other.begin(), other.end());
+  out.insert(out.end(), raw.begin(), raw.end());
+  return out;
+}
+
+// True if every id answers a ping on this port at this baud.
+bool allIdsAnswer(
+  const std::string & port, int baud, double proto, const std::vector<uint8_t> & ids)
+{
+  auto * ph = dynamixel::PortHandler::getPortHandler(port.c_str());
+  auto * pk = dynamixel::PacketHandler::getPacketHandler(proto);
+  bool ok = ph->openPort() && ph->setBaudRate(baud);
+  for (auto id : ids) {
+    if (!ok) break;
+    bool answered = false;
+    for (int attempt = 0; attempt < 3 && !answered; ++attempt) {
+      uint16_t model = 0;
+      uint8_t err = 0;
+      answered = pk->ping(ph, id, &model, &err) == COMM_SUCCESS;
+    }
+    ok = answered;
+  }
+  ph->closePort();
+  delete ph;
+  return ok;
+}
+
+// "auto"/"" -> search. A configured path that does not exist (USB renumbered
+// after reboot) also falls back to the search instead of failing.
+std::string resolveDynamixelPort(
+  const std::string & configured, int baud, double proto,
+  const std::vector<uint8_t> & ids, const rclcpp::Logger & log)
+{
+  std::error_code ec;
+  if (!configured.empty() && configured != "auto") {
+    if (std::filesystem::exists(configured, ec)) return configured;
+    RCLCPP_WARN(log, "port '%s' does not exist; searching for the Dynamixel bus",
+      configured.c_str());
+  }
+  std::string tried;
+  for (const auto & p : candidatePorts()) {
+    if (allIdsAnswer(p, baud, proto, ids)) {
+      RCLCPP_INFO(log, "port auto-detect: Dynamixel IDs found on %s", p.c_str());
+      return p;
+    }
+    tried += " " + p;
+  }
+  RCLCPP_FATAL(log,
+    "port auto-detect: no serial port answered all dxl_ids at %d baud (tried:%s). "
+    "Check servo power, the U2D2 cable, dxl_ids and baudrate.",
+    baud, tried.empty() ? " none" : tried.c_str());
+  throw std::runtime_error("Dynamixel port not found");
+}
+
 double wrap_to_pi(double a)
 {
   constexpr double TWO_PI = 2.0 * M_PI;
@@ -22,7 +108,8 @@ double wrap_to_pi(double a)
 SwerveSteering::SwerveSteering()
 : Node("swerve_steering")
 {
-  declare_parameter<std::string>("port", "/dev/ttyUSB0");
+  // "auto" = find the serial port where all dxl_ids answer.
+  declare_parameter<std::string>("port", "auto");
   declare_parameter<int>("baudrate", 1000000);
   declare_parameter<double>("protocol_version", 2.0);
   declare_parameter<std::vector<int64_t>>("dxl_ids", std::vector<int64_t>{0, 0});
@@ -38,6 +125,13 @@ SwerveSteering::SwerveSteering()
   // namespace. Change only if a robot's modules are named something else.
   declare_parameter<std::vector<std::string>>(
     "module_names", std::vector<std::string>{"swerve1", "swerve2"});
+  declare_parameter<int>("lock_id", 0);
+  declare_parameter<int>("lock_unlocked_unit", 3184);
+  declare_parameter<int>("lock_locked_unit", 3440);
+  declare_parameter<int>("lock_profile_velocity", 40);
+  // Command the latch to the locked position at startup (retried each second
+  // until the servo answers). The latch keeps torque when the node exits.
+  declare_parameter<bool>("lock_on_startup", false);
 
   const auto mod_names = get_parameter("module_names").as_string_array();
   if (mod_names.size() != 2) {
@@ -59,6 +153,11 @@ SwerveSteering::SwerveSteering()
   const auto zo = get_parameter("zero_offset_unit").as_integer_array();
   const auto inv = get_parameter("invert").as_bool_array();
   assume_forward_on_startup_ = get_parameter("assume_forward_on_startup").as_bool();
+  lock_id_ = get_parameter("lock_id").as_int();
+  lock_unlocked_unit_ = static_cast<int32_t>(get_parameter("lock_unlocked_unit").as_int());
+  lock_locked_unit_ = static_cast<int32_t>(get_parameter("lock_locked_unit").as_int());
+  lock_profile_velocity_ = static_cast<uint32_t>(get_parameter("lock_profile_velocity").as_int());
+  lock_startup_pending_ = lock_id_ > 0 && get_parameter("lock_on_startup").as_bool();
 
   if (ids_param.size() != 2 || zo.size() != 2 || inv.size() != 2) {
     RCLCPP_FATAL(get_logger(),
@@ -86,8 +185,10 @@ SwerveSteering::SwerveSteering()
     target_initialized_[i] = false;
   }
 
+  const std::string dxl_port =
+    resolveDynamixelPort(port, baudrate, proto, ids, get_logger());
   dxl_ = std::make_unique<DynamixelSdkInterface>(
-    port, baudrate, proto, ids, opmode, profile, prof_v, prof_a);
+    dxl_port, baudrate, proto, ids, opmode, profile, prof_v, prof_a);
 
   // RELATIVE topic names: they resolve under whatever namespace the node is
   // launched in (/robot1, /robot2, ...), so N robots can share a DDS domain.
@@ -102,14 +203,45 @@ SwerveSteering::SwerveSteering()
   joint_states_pub_ = create_publisher<sensor_msgs::msg::JointState>(
     "swerve_steering/joint_states", 10);
 
+  if (lock_id_ > 0) {
+    lock_sub_ = create_subscription<std_msgs::msg::Bool>(
+      "dynamixel_lock", 10,
+      [this](std_msgs::msg::Bool::SharedPtr m) { lockCallback(m); });
+    RCLCPP_INFO(get_logger(),
+      "Lock ID %d on %s: unlocked=%d locked=%d profile_velocity=%u",
+      lock_id_, lock_sub_->get_topic_name(), lock_unlocked_unit_, lock_locked_unit_,
+      lock_profile_velocity_);
+  }
+
   timer_ = create_wall_timer(5ms, std::bind(&SwerveSteering::run, this));
 
   RCLCPP_INFO(get_logger(),
     "SwerveSteering ready: port=%s baud=%d, ids=[%u, %u], gear_ratio=%.2f, "
     "zero_offset=[%d, %d], invert=[%d, %d]",
-    port.c_str(), baudrate, ids[0], ids[1], gear_ratio_,
+    dxl_port.c_str(), baudrate, ids[0], ids[1], gear_ratio_,
     zero_offset_unit_[0], zero_offset_unit_[1],
     static_cast<int>(invert_[0]), static_cast<int>(invert_[1]));
+}
+
+void SwerveSteering::lockCallback(const std_msgs::msg::Bool::SharedPtr & msg)
+{
+  if (!msg) return;
+  // An explicit command overrides any pending startup lock.
+  lock_startup_pending_ = false;
+  applyLock(msg->data);
+}
+
+bool SwerveSteering::applyLock(bool locked)
+{
+  if (lock_id_ <= 0 || lock_id_ > 253) return false;
+  const int32_t goal = locked ? lock_locked_unit_ : lock_unlocked_unit_;
+  if (!dxl_->commandGoal(static_cast<uint8_t>(lock_id_), goal, lock_profile_velocity_)) {
+    RCLCPP_WARN(get_logger(), "lock ID %d command failed", lock_id_);
+    return false;
+  }
+  RCLCPP_INFO(get_logger(), "lock ID %d -> %s (goal %d)",
+    lock_id_, locked ? "locked" : "unlocked", goal);
+  return true;
 }
 
 void SwerveSteering::swerveCallback(
@@ -126,6 +258,15 @@ void SwerveSteering::swerveCallback(
 
 void SwerveSteering::run()
 {
+  if (lock_startup_pending_) {
+    const auto now = get_clock()->now();
+    if (lock_last_try_.nanoseconds() == 0 || (now - lock_last_try_).seconds() >= 1.0) {
+      lock_last_try_ = now;
+      if (applyLock(true)) {
+        lock_startup_pending_ = false;
+      }
+    }
+  }
   DynamixelSdkInterface::States states;
   if (!dxl_->readOnce(states)) {
     RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 1000, "Dynamixel readOnce failed");
@@ -172,6 +313,26 @@ void SwerveSteering::run()
       const double delta_module =
         wrap_to_pi(desired_heading_rad_[i] - prev_module_target_wrapped);
       unwrapped_motor_target_rad_[i] += dir * gear_ratio_ * delta_module;
+
+      // Anti-windup. The step above is relative to the previous TARGET, not to
+      // where the module is. If the servo lags behind fast heading changes,
+      // successive steps can push the target more than half a module turn
+      // away from the module, and extended-position mode then drives the long
+      // way round (up to ~a full extra turn). Re-express the target by whole
+      // module turns so it sits on the short side of the PRESENT position.
+      // Same heading mod 2*pi, so the drive sign chosen upstream stays valid.
+      // The margin is hysteresis: no direction flip-flop near exactly pi.
+      {
+        constexpr double kFoldMargin = 0.2;  // rad (~11 deg)
+        const double present_motor_rad =
+          (states.positions[i] - zero_offset_unit_[i]) * DynamixelSdkInterface::UNIT2RAD;
+        const double gap_module =
+          dir * (unwrapped_motor_target_rad_[i] - present_motor_rad) / gear_ratio_;
+        if (std::fabs(gap_module) > M_PI + kFoldMargin) {
+          unwrapped_motor_target_rad_[i] =
+            present_motor_rad + dir * gear_ratio_ * wrap_to_pi(gap_module);
+        }
+      }
 
       goals[i] =
         static_cast<int32_t>(

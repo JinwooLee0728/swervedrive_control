@@ -1,0 +1,353 @@
+# =============================================================================
+#  SWERVE COOPERATIVE TRANSPORT -- SINGLE HARDWARE CONFIGURATION
+# =============================================================================
+#  THIS IS THE ONLY FILE YOU SHOULD EDIT WHEN THE HARDWARE CHANGES.
+#
+#  It is passed to every node on both NUCs. Values that more than one node
+#  needs are necessarily repeated -- ROS 2 parameter files are keyed by node
+#  name and cannot alias across blocks. Those repetitions are NOT maintained by
+#  hand discipline: `hardware_check` re-derives every one of them at startup
+#  and refuses to let the system launch on a mismatch. If you change a number
+#  here, change its partners, and the validator will tell you if you missed one.
+#
+#  PLATFORM: 2 swerve robots x 2 steering modules = 4 agents.
+#
+#  Each AGENT is a swerve MODULE, not a robot. A steered wheel is exactly the
+#  nonholonomic unicycle the controller models: its contact point rolls only
+#  along the wheel direction and the steer angle is directly actuated.
+#
+#  This is valid ONLY because each chassis is RIGIDLY BOLTED to the payload.
+#  A chassis that can yaw freely makes the module offsets time-varying and
+#  breaks the whole formulation.
+#
+#  Module <-> robot ownership:
+#      robot1 (NUC1) -> module1, module2
+#      robot2 (NUC2) -> module3, module4
+#
+#  !! EVERY GEOMETRY NUMBER BELOW IS A PLACEHOLDER UNTIL MEASURED ON THE RIG !!
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+#  CONTROLLER  (runs on NUC1, root namespace)
+# -----------------------------------------------------------------------------
+controller:
+  ros__parameters:
+    controller_name: "proposed"
+    per_robot_saturation: false   # the proposed law owns the fleet-wide
+                                  # diamond projection (eq. 24); the per-robot
+                                  # clamp is NOT rigid-consistent, see
+                                  # applyPerRobotDiamond()
+
+    topic_prefix: ""
+    ref_topic_prefix: ""
+    payload_name: "payload"
+
+    # Agent names = module names. Order defines the meaning of r_x/r_y below
+    # and MUST match `agent_names` in the two bridge blocks.
+    robot_names: ["module1", "module2", "module3", "module4"]
+
+    # ---- MEASURE ME -------------------------------------------------------
+    # Module positions r^[k] in the PAYLOAD body frame [m]. Constant because
+    # each chassis is bolted. hardware_check verifies these equal
+    #     mount + R(mount_angle) * module_offset
+    # from the bridge blocks, so the two descriptions cannot drift apart.
+    r_x: [1.075, 1.075, -1.075, -1.075]
+    r_y: [-0.23, 0.23, 0.23, -0.23]
+
+    # ---- ACTUATOR ENVELOPE ------------------------------------------------
+    # Not tuning knobs: the module's real motor limits. The diamond projection
+    # |v|/v_max + |w|/w_max <= 1 is a true actuator constraint (Proposition 1).
+    #   v_max : max wheel speed      [m/s]
+    #   w_max : max steering rate    [rad/s]
+    # w_max is DERIVED from the Dynamixel and verified by hardware_check:
+    #     w_max = profile_velocity * 0.229 * 2*pi / (60 * steering_gear_ratio)
+    # Steering rate is the binding constraint on tracking; measured in sim
+    # (slip 0.00000 throughout): 0.48 -> 0.104 m, 0.80 -> 0.060 m,
+    # 1.2 -> 0.030 m, 3.0 -> 0.010 m.
+    v_max: 0.20
+    w_max: 1.2
+
+    rate_hz: 100.0
+    input_timeout: 0.2
+
+    proposed:
+      # DIRECT STEERING. true  -> command theta_d (eq. 8) straight to the
+      # Dynamixel, skipping heading regulation (eq. 22) and velocity
+      # attenuation (eq. 23). Those exist only because a differential-drive
+      # robot cannot set its heading directly. Proposition 2 guarantees strict
+      # kinematic feasibility at e_theta == 0, which direct steering gives by
+      # construction rather than asymptotically.
+      #            false -> reproduce the published cascade exactly.
+      direct_steering: true
+
+      k0_diag: [10.0, 10.0, 50.0]
+      k1_diag: [5.0, 5.0, 30.0]
+      lambda0: 0.01
+      delta_sig: 0.05
+      k_null: 0.5
+      eps_icr: 0.01
+      # gamma_v / k_theta / beta_theta / sgn_smooth are UNUSED when
+      # direct_steering is true. Kept so the published cascade can be
+      # reproduced by flipping the flag.
+      gamma_v: 7.0
+      k_theta: 15.0
+      beta_theta: 0.2
+      sgn_smooth: 0.03
+      eta0: 0.1
+      psi0: 0.0
+      V0: 0.0
+
+
+# -----------------------------------------------------------------------------
+#  LOCALIZATION  (runs on NUC1) -- external LiDAR node -> <payload>/pose
+# -----------------------------------------------------------------------------
+lidar_pose_adapter:
+  ros__parameters:
+    # ---- SET ME to match your LiDAR localization node ---------------------
+    input_topic: "/lidar/payload_pose"
+    # PoseStamped | Odometry | PoseWithCovarianceStamped
+    input_type: "PoseStamped"
+    topic_prefix: ""
+    payload_name: "payload"
+    world_frame: "world"
+    # true -> re-stamp with local receive time. Turn on if the localization
+    # node's clock is not synced to NUC1.
+    restamp: false
+
+
+# -----------------------------------------------------------------------------
+#  REFERENCE  (runs on NUC1) -- external receding-horizon planner
+# -----------------------------------------------------------------------------
+#  Only used when use_progression_regulator:=true. In "planner" mode the
+#  trajectory_generator ingests an external nav_msgs/Path horizon, re-fits the
+#  spline across replans, and applies the paper's progression-rate regulator
+#  (eq. 13, tau_dot = 1/(1 + e'Ks e)) which slows the reference as tracking
+#  error grows.
+#
+#  If your planner publishes instantaneous pose/twist/accel instead of a path,
+#  launch with use_progression_regulator:=false; the controller then subscribes
+#  to its topics directly and eq. 13 is NOT available (re-timing evaluates
+#  q_ref(tau) and needs a parameterized path, not a setpoint).
+# -----------------------------------------------------------------------------
+trajectory_generator:
+  ros__parameters:
+    topic_prefix: ""
+    payload_name: "payload"
+    world_frame: "world"
+    path_source: "planner"
+    planner_path_topic: "planned_path"
+
+    dot_s_nom: 1.0
+    ks_diag: [10.0, 10.0, 20.0]     # Ks in eq. 13
+    rate_hz: 100.0
+    ddot_s_filter: 0.0
+    hold_at_end: true
+
+
+# -----------------------------------------------------------------------------
+#  ROBOT 1  (NUC1) -- agents module1, module2
+# -----------------------------------------------------------------------------
+/robot1/swerve_cooptrans_bridge:
+  ros__parameters:
+    agent_names: ["module1", "module2"]
+    module_names: ["swerve1", "swerve2"]
+
+    # ---- MEASURE ME: rigid mount geometry ---------------------------------
+    # This chassis's origin and orientation in the PAYLOAD body frame.
+    mount_x: 1.075  # [m]
+    mount_y: 0.0  # [m]
+    mount_angle: 0.0  # faces payload +x
+    # Module positions in the CHASSIS frame [m]: side-by-side pair on the
+    # chassis y axis, 0.46 m track, zero wheelbase.
+    module_offsets_x: [0.0, 0.0]
+    module_offsets_y: [-0.23, 0.23]  # swerve1 on chassis right (same as robot2)
+
+    payload_topic: "/payload/pose"
+    rate_hz: 100.0
+
+    # Independent of the controller's watchdog: also covers NUC<->NUC network
+    # loss, which the controller cannot observe. On timeout the wheels stop and
+    # the steering HOLDS its last angle.
+    cmd_timeout: 0.2
+    pose_timeout: 0.5
+    wheel_speed_max: 0.5
+
+    # Local remnant of eq. (23). With direct steering the controller assumes
+    # e_theta ~= 0, so this is the only protection against a servo that cannot
+    # keep up: attenuate wheel speed while the measured heading lags theta_d,
+    # and stop outright past heading_error_stop.
+    attenuate_on_heading_error: 0.0  # 0.0 disables (was 7.0)
+    heading_error_stop: 3.2  # > pi: never stops (was 1.2)
+    wheel_speed_sign: -1.0  # reverse all robot1 wheel speeds
+
+/robot1/swerve_steering:
+  ros__parameters:
+    module_names: ["swerve1", "swerve2"]
+    port: "/dev/ttyUSB1"
+    baudrate: 1000000               # servos are set to 1 Mbps (dxl_scan 2026-11-01)
+    protocol_version: 2.0
+    dxl_ids: [1, 3]                 # ---- SET ME (ros2 run swerve_test dxl_scan)
+    operating_mode: 4               # 4 = Extended Position (multi-turn safe)
+    profile: "Trapezoidal"
+    # SETS controller w_max -- see the controller block. 250 -> 1.2 rad/s at
+    # gear_ratio 5.0. VERIFY against your servo's Velocity Limit (EEPROM 44);
+    # ~265 in the same units on a stock XM430-W350.
+    profile_velocity: 250.0
+    profile_acceleration: 10.0
+    gear_ratio: 5.0                 # motor revs per module rev
+    zero_offset_unit: [2048, 2048]
+    invert: [true, true]   # robot1 steering turns opposite to robot2 (y was mirrored with false)
+    # Snapshot the wheels' boot position as module-zero: hand-align both
+    # wheels along chassis +x BEFORE launching.
+    assume_forward_on_startup: true
+    # ID 5 latch, XM430-W350, on the same bus. Commanded by
+    # /robot1/dynamixel_lock (Bool). Locked = unlocked + 256 counts (22.5 deg).
+    # lock_on_startup locks it at launch; the latch keeps torque on exit.
+    lock_id: 5
+    lock_unlocked_unit: 1514
+    lock_locked_unit: 1770
+    lock_profile_velocity: 40
+    lock_on_startup: true
+
+/robot1/swerve_odrive_bridge:
+  ros__parameters:
+    swerve1_topic: "swerve1/cmd_vel"
+    swerve2_topic: "swerve2/cmd_vel"
+    odrive1_namespace: "odrive_axis0"
+    odrive2_namespace: "odrive_axis1"
+    # 70 mm diameter wheel (confirmed 2026-11-01). Scales every wheel command
+    # linearly; hardware_check warns above 0.1.
+    wheel_radius: 0.035
+    drive_gear_ratio: 6.0
+    odrive1_sign: -1.0  # robot1 drive reversed
+    odrive2_sign: -1.0  # robot1 drive reversed
+    auto_arm: true
+    arm_timeout_sec: 5.0
+    publish_rate_hz: 20.0
+    # ---- MEASURE ME: hold drive at zero, turn steering by hand, tune until
+    # the wheel stops rolling. Matters more here than in teleop because the
+    # controller steers continuously.
+    steering_drive_coupling: -0.6
+    steering_gear_ratio: 5.0        # must equal swerve_steering.gear_ratio
+    steering_joint_states_topic: "swerve_steering/joint_states"
+
+# ODrive CAN interface. Each robot has its own bus on its own NUC, so node ids
+# may repeat across robots -- they only have to be unique per physical bus
+# (CAN-Simple uses a 6-bit node id field: 0..63 per bus).
+/robot1/odrive_axis0/odrive_can_node:
+  ros__parameters:
+    node_id: 0
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
+    interface: "can0"
+
+/robot1/odrive_axis1/odrive_can_node:
+  ros__parameters:
+    node_id: 1
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
+    interface: "can0"
+
+# -----------------------------------------------------------------------------
+#  ROBOT 2  (NUC2) -- agents module3, module4
+# -----------------------------------------------------------------------------
+/robot2/swerve_cooptrans_bridge:
+  ros__parameters:
+    agent_names: ["module3", "module4"]
+    module_names: ["swerve1", "swerve2"]
+
+    mount_x: -1.075  # [m]
+    mount_y: 0.0  # [m]
+    mount_angle: -3.141592653589793  # -180 deg: faces payload -x
+    module_offsets_x: [0.0, 0.0]
+    module_offsets_y: [-0.23, 0.23]
+
+    payload_topic: "/payload/pose"
+    rate_hz: 100.0
+    cmd_timeout: 0.2
+    pose_timeout: 0.5
+    wheel_speed_max: 0.5
+    attenuate_on_heading_error: 0.0  # 0.0 disables (was 7.0)
+    heading_error_stop: 3.2  # > pi: never stops (was 1.2)
+    wheel_speed_sign: 1.0
+
+/robot2/swerve_steering:
+  ros__parameters:
+    module_names: ["swerve1", "swerve2"]
+    port: "/dev/ttyUSB1"
+    baudrate: 57600
+    protocol_version: 2.0
+    dxl_ids: [1, 3]                 # ---- SET ME (per-robot bus, may repeat)
+    operating_mode: 4
+    profile: "Trapezoidal"
+    profile_velocity: 250.0
+    profile_acceleration: 10.0
+    gear_ratio: 5.0
+    zero_offset_unit: [2048, 2048]
+    invert: [false, false]
+    assume_forward_on_startup: true
+
+/robot2/swerve_odrive_bridge:
+  ros__parameters:
+    swerve1_topic: "swerve1/cmd_vel"
+    swerve2_topic: "swerve2/cmd_vel"
+    odrive1_namespace: "odrive_axis0"
+    odrive2_namespace: "odrive_axis1"
+    wheel_radius: 0.035            # 70 mm wheel, same as robot1
+    drive_gear_ratio: 6.0
+    odrive1_sign: 1.0
+    odrive2_sign: 1.0
+    auto_arm: true
+    arm_timeout_sec: 5.0
+    publish_rate_hz: 20.0
+    steering_drive_coupling: -0.6
+    steering_gear_ratio: 5.0
+    steering_joint_states_topic: "swerve_steering/joint_states"
+
+# ODrive CAN interface. Each robot has its own bus on its own NUC, so node ids
+# may repeat across robots -- they only have to be unique per physical bus
+# (CAN-Simple uses a 6-bit node id field: 0..63 per bus).
+/robot2/odrive_axis0/odrive_can_node:
+  ros__parameters:
+    node_id: 0
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
+    interface: "can0"
+
+/robot2/odrive_axis1/odrive_can_node:
+  ros__parameters:
+    node_id: 1
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
+    interface: "can0"
+
+# -----------------------------------------------------------------------------
+#  SIMULATION  (desktop testing only; not launched on hardware)
+# -----------------------------------------------------------------------------
+kinematic_plant:
+  ros__parameters:
+    topic_prefix: ""
+    payload_name: "payload"
+    world_frame: "world"
+    robot_names: ["module1", "module2", "module3", "module4"]
+    r_x: [1.075, 1.075, -1.075, -1.075]  # must match the controller block
+    r_y: [-0.23, 0.23, 0.23, -0.23]
+    plant_rate: 200.0
+    # 'servo' models the Dynamixel: slew toward <agent>/desired_heading at up
+    # to steer_rate_max. 'unicycle' integrates the yaw-rate command instead
+    # (the old differential-drive plant).
+    steering_mode: "servo"
+    steer_rate_max: 1.2                  # must equal controller w_max
+    init_x: 0.0
+    init_y: 0.0
+    init_theta: 0.0
+    init_headings: [0.0, 0.0, 0.0, 0.0]  # world-frame module headings at t=0
+
+
+# -----------------------------------------------------------------------------
+#  VALIDATOR -- re-derives every cross-file constraint, refuses to start on
+#  a mismatch. Reads this same file, so it cannot drift from what nodes load.
+# -----------------------------------------------------------------------------
+hardware_check:
+  ros__parameters:
+    robot_blocks: ["/robot1", "/robot2"]
+    geometry_tol: 1.0e-4     # [m]   r^[k] vs mount + R(alpha)*offset
+    rate_tol: 1.0e-3         # [rad/s] w_max vs derived Dynamixel rate
+    wheel_radius_warn: 0.1   # [m]   warn above this

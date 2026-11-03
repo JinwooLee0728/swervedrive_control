@@ -38,6 +38,8 @@ DynamixelSdkInterface::~DynamixelSdkInterface()
       packet_handler_->write1ByteTxRx(
         port_handler_, id, addr_torque_enable_, torque_disable_value_, &dxl_error);
     }
+    // Motors driven through commandGoal() (the latch) are deliberately left
+    // with torque ON: releasing the latch on exit would drop the lock.
     port_handler_->closePort();
   }
 }
@@ -215,6 +217,50 @@ bool DynamixelSdkInterface::writeGoalPositions(const std::vector<int32_t> & goal
   if (dxl_comm_result != COMM_SUCCESS) {
     RCLCPP_WARN(logger_, "BulkWrite txPacket failed: %s",
       packet_handler_->getTxRxResult(dxl_comm_result));
+    return false;
+  }
+  return true;
+}
+
+bool DynamixelSdkInterface::commandGoal(
+  uint8_t id, int32_t goal_unit, uint32_t profile_velocity)
+{
+  uint8_t dxl_error = 0;
+  if (!commanded_ids_.count(id)) {
+    int result = packet_handler_->write1ByteTxRx(
+      port_handler_, id, addr_torque_enable_, torque_disable_value_, &dxl_error);
+    if (result != COMM_SUCCESS) {
+      RCLCPP_WARN(logger_, "Torque OFF failed (ID=%d): %s",
+        id, packet_handler_->getTxRxResult(result));
+      return false;
+    }
+    result = packet_handler_->write4ByteTxRx(
+      port_handler_, id, addr_profile_vel_, profile_velocity, &dxl_error);
+    if (result != COMM_SUCCESS) {
+      RCLCPP_WARN(logger_, "Profile velocity failed (ID=%d): %s",
+        id, packet_handler_->getTxRxResult(result));
+      return false;
+    }
+    result = packet_handler_->write1ByteTxRx(
+      port_handler_, id, addr_torque_enable_, torque_enable_value_, &dxl_error);
+    if (result != COMM_SUCCESS) {
+      RCLCPP_WARN(logger_, "Torque ON failed (ID=%d): %s",
+        id, packet_handler_->getTxRxResult(result));
+      return false;
+    }
+    commanded_ids_.insert(id);
+  }
+
+  int result = packet_handler_->write4ByteTxRx(
+    port_handler_, id, addr_goal_position_, static_cast<uint32_t>(goal_unit), &dxl_error);
+  if (result != COMM_SUCCESS) {
+    RCLCPP_WARN(logger_, "GoalPosition failed (ID=%d): %s",
+      id, packet_handler_->getTxRxResult(result));
+    return false;
+  }
+  if (dxl_error != 0) {
+    RCLCPP_WARN(logger_, "GoalPosition error (ID=%d): %s",
+      id, packet_handler_->getRxPacketError(dxl_error));
     return false;
   }
   return true;

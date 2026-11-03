@@ -282,9 +282,15 @@ conversion and the speed clamp.
 
 - The whole twist is scaled down when any module would exceed `v_max`, which
   keeps the centre of rotation.
-- Each module takes the shorter way round, reversing the wheel instead of
-  steering more than 90°.
-- All wheels slow together while any module is still steering, and stop if its
+- No 180° flip: each wheel always points along its direction of travel and
+  never runs in reverse; a big direction change is done by steering.
+- The sent twist ramps at `max_accel`, so a new direction sweeps each wheel's
+  velocity across instead of reversing it (`s` still stops at once).
+- Wheels wait until every module's commanded and measured heading are within `align_window` of its
+  target, so a wheel never drives along its old axis while turning.
+- Each module's commanded heading turns at most `max_heading_rate`.
+- All wheels slow together while any module is still short of its target
+  heading (measured vs. target, not vs. the slewed command), and stop if its
   error exceeds `heading_error_stop` (0.5 rad).
 - Wheels stop if feedback from any module is missing.
 
@@ -295,6 +301,10 @@ conversion and the speed clamp.
 | `lin_step` / `ang_step` | 0.01 m/s / 0.05 rad/s | change per key press |
 | `heading_error_gain` | 7.0 | wheel gain `exp(−gain·e_max)` while steering |
 | `heading_error_stop` | 0.5 rad | above this steering error, all wheels stop |
+| `max_heading_rate` | 0.8 rad/s | max slew of each module's commanded heading; keep below the REAL steering rate (robot1 measured 0.90–0.95 rad/s under load, although `profile_velocity` 250 predicts ~1.2). 0 disables |
+| `max_accel` | 0.15 m/s² | ramp of the sent twist (max change of any module velocity vector); `s` and quit bypass it. 0 disables |
+| `align_window` | 0.5 rad | wheels held at 0 until every moving module's commanded AND measured heading are within this of its target, full speed at 0. 0 disables |
+| `agents` | all | subset of agents to drive, e.g. `"[module1, module2]"` for robot 1 alone |
 | `rate_hz` | 50 | publish rate (bridge timeout is 0.2 s) |
 
 Never run it together with the controller: both publish `/moduleK/*`.
@@ -383,6 +393,15 @@ calibrate a *pinned* attachment and is obsolete here.
 2. Measure each chassis's mount pose → `mount_x` / `mount_y` / `mount_angle`.
    `hardware_check` verifies that (1) equals mount + R(α)·offset.
 3. Per boot, hand-align the wheels (see [Before every boot](#before-every-boot)).
+
+**ODrive motor calibration.** If `swerve_odrive_bridge` dies with
+`procedure_result=14 (NOT_CALIBRATED)`, recalibrate that axis over CAN. Stop
+the robot launch and lift the wheel first: the motor spins on its own.
+
+```bash
+tools/odrive_calibrate.sh --status 0   # read-only: state of node_id 0
+tools/odrive_calibrate.sh 0            # calibrate, save, verify closed loop
+```
 
 ---
 

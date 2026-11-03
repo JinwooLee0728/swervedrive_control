@@ -52,8 +52,8 @@ controller:
     # each chassis is bolted. hardware_check verifies these equal
     #     mount + R(mount_angle) * module_offset
     # from the bridge blocks, so the two descriptions cannot drift apart.
-    r_x: [0.35, 0.35, -0.35, -0.35]
-    r_y: [0.23, -0.23, 0.23, -0.23]
+    r_x: [1.075, 1.075, -1.075, -1.075]
+    r_y: [-0.23, 0.23, 0.23, -0.23]
 
     # ---- ACTUATOR ENVELOPE ------------------------------------------------
     # Not tuning knobs: the module's real motor limits. The diamond projection
@@ -155,13 +155,13 @@ trajectory_generator:
 
     # ---- MEASURE ME: rigid mount geometry ---------------------------------
     # This chassis's origin and orientation in the PAYLOAD body frame.
-    mount_x: 0.35          # [m]
-    mount_y: 0.0           # [m]
-    mount_angle: 0.0       # alpha [rad], chassis +x relative to payload +x
+    mount_x: 1.075  # [m]
+    mount_y: 0.0  # [m]
+    mount_angle: 0.0  # faces payload +x
     # Module positions in the CHASSIS frame [m]: side-by-side pair on the
     # chassis y axis, 0.46 m track, zero wheelbase.
     module_offsets_x: [0.0, 0.0]
-    module_offsets_y: [0.23, -0.23]
+    module_offsets_y: [-0.23, 0.23]  # swerve1 on chassis right (same as robot2)
 
     payload_topic: "/payload/pose"
     rate_hz: 100.0
@@ -177,14 +177,15 @@ trajectory_generator:
     # e_theta ~= 0, so this is the only protection against a servo that cannot
     # keep up: attenuate wheel speed while the measured heading lags theta_d,
     # and stop outright past heading_error_stop.
-    attenuate_on_heading_error: 7.0
-    heading_error_stop: 1.2
+    attenuate_on_heading_error: 0.0  # 0.0 disables (was 7.0)
+    heading_error_stop: 3.2  # > pi: never stops (was 1.2)
+    wheel_speed_sign: -1.0  # reverse all robot1 wheel speeds
 
 /robot1/swerve_steering:
   ros__parameters:
     module_names: ["swerve1", "swerve2"]
-    port: "/dev/ttyUSB1"
-    baudrate: 57600
+    port: "auto"                    # find the bus where all dxl_ids answer (or set a /dev/serial/by-id path)
+    baudrate: 1000000               # servos are set to 1 Mbps (dxl_scan 2026-11-01)
     protocol_version: 2.0
     dxl_ids: [1, 3]                 # ---- SET ME (ros2 run swerve_test dxl_scan)
     operating_mode: 4               # 4 = Extended Position (multi-turn safe)
@@ -193,13 +194,21 @@ trajectory_generator:
     # gear_ratio 5.0. VERIFY against your servo's Velocity Limit (EEPROM 44);
     # ~265 in the same units on a stock XM430-W350.
     profile_velocity: 250.0
-    profile_acceleration: 10.0
+    profile_acceleration: 50.0     # ~3.7 rad/s^2 at module (5:1). Was 10.0 (~0.75 rad/s^2, ~1.6 s to reach w_max).
     gear_ratio: 5.0                 # motor revs per module rev
     zero_offset_unit: [2048, 2048]
-    invert: [false, false]
+    invert: [false, false]  # true mirrors y on robot1 (tested 2026-11-02)
     # Snapshot the wheels' boot position as module-zero: hand-align both
     # wheels along chassis +x BEFORE launching.
     assume_forward_on_startup: true
+    # ID 5 latch, XM430-W350, on the same bus. Commanded by
+    # /robot1/dynamixel_lock (Bool). Locked = unlocked + 256 counts (22.5 deg).
+    # lock_on_startup locks it at launch; the latch keeps torque on exit.
+    lock_id: 5
+    lock_unlocked_unit: 1514
+    lock_locked_unit: 1770
+    lock_profile_velocity: 40
+    lock_on_startup: true
 
 /robot1/swerve_odrive_bridge:
   ros__parameters:
@@ -207,14 +216,12 @@ trajectory_generator:
     swerve2_topic: "swerve2/cmd_vel"
     odrive1_namespace: "odrive_axis0"
     odrive2_namespace: "odrive_axis1"
-    # ---- VERIFY ME BEFORE ANY POWERED RUN ---------------------------------
-    # 0.35 m is a 0.7 m diameter wheel -- larger than the 0.46 m module track.
-    # If the real wheel is 70 mm this must be 0.035 and every wheel command is
-    # currently 10x wrong. hardware_check warns above 0.1.
-    wheel_radius: 0.35
+    # 70 mm diameter wheel (confirmed 2026-11-01). Scales every wheel command
+    # linearly; hardware_check warns above 0.1.
+    wheel_radius: 0.035
     drive_gear_ratio: 6.0
-    odrive1_sign: 1.0
-    odrive2_sign: 1.0
+    odrive1_sign: -1.0  # robot1 drive reversed
+    odrive2_sign: -1.0  # robot1 drive reversed
     auto_arm: true
     arm_timeout_sec: 5.0
     publish_rate_hz: 20.0
@@ -231,11 +238,13 @@ trajectory_generator:
 /robot1/odrive_axis0/odrive_can_node:
   ros__parameters:
     node_id: 0
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
     interface: "can0"
 
 /robot1/odrive_axis1/odrive_can_node:
   ros__parameters:
     node_id: 1
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
     interface: "can0"
 
 # -----------------------------------------------------------------------------
@@ -246,31 +255,32 @@ trajectory_generator:
     agent_names: ["module3", "module4"]
     module_names: ["swerve1", "swerve2"]
 
-    mount_x: -0.35         # [m]
-    mount_y: 0.0           # [m]
-    mount_angle: 0.0       # alpha [rad]
+    mount_x: -1.075  # [m]
+    mount_y: 0.0  # [m]
+    mount_angle: -3.141592653589793  # -180 deg: faces payload -x
     module_offsets_x: [0.0, 0.0]
-    module_offsets_y: [0.23, -0.23]
+    module_offsets_y: [-0.23, 0.23]
 
     payload_topic: "/payload/pose"
     rate_hz: 100.0
     cmd_timeout: 0.2
     pose_timeout: 0.5
     wheel_speed_max: 0.5
-    attenuate_on_heading_error: 7.0
-    heading_error_stop: 1.2
+    attenuate_on_heading_error: 0.0  # 0.0 disables (was 7.0)
+    heading_error_stop: 3.2  # > pi: never stops (was 1.2)
+    wheel_speed_sign: 1.0
 
 /robot2/swerve_steering:
   ros__parameters:
     module_names: ["swerve1", "swerve2"]
-    port: "/dev/ttyUSB1"
+    port: "auto"                    # find the bus where all dxl_ids answer (or set a /dev/serial/by-id path)
     baudrate: 57600
     protocol_version: 2.0
     dxl_ids: [1, 3]                 # ---- SET ME (per-robot bus, may repeat)
     operating_mode: 4
     profile: "Trapezoidal"
     profile_velocity: 250.0
-    profile_acceleration: 10.0
+    profile_acceleration: 50.0     # ~3.7 rad/s^2 at module (5:1). Was 10.0 (~0.75 rad/s^2, ~1.6 s to reach w_max).
     gear_ratio: 5.0
     zero_offset_unit: [2048, 2048]
     invert: [false, false]
@@ -282,7 +292,7 @@ trajectory_generator:
     swerve2_topic: "swerve2/cmd_vel"
     odrive1_namespace: "odrive_axis0"
     odrive2_namespace: "odrive_axis1"
-    wheel_radius: 0.35
+    wheel_radius: 0.035            # 70 mm wheel, same as robot1
     drive_gear_ratio: 6.0
     odrive1_sign: 1.0
     odrive2_sign: 1.0
@@ -299,11 +309,13 @@ trajectory_generator:
 /robot2/odrive_axis0/odrive_can_node:
   ros__parameters:
     node_id: 0
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
     interface: "can0"
 
 /robot2/odrive_axis1/odrive_can_node:
   ros__parameters:
     node_id: 1
+    axis_idle_on_shutdown: true   # CTRL-C / SIGTERM -> input_vel 0, then IDLE
     interface: "can0"
 
 # -----------------------------------------------------------------------------
@@ -315,8 +327,8 @@ kinematic_plant:
     payload_name: "payload"
     world_frame: "world"
     robot_names: ["module1", "module2", "module3", "module4"]
-    r_x: [0.35, 0.35, -0.35, -0.35]      # must match the controller block
-    r_y: [0.23, -0.23, 0.23, -0.23]
+    r_x: [1.075, 1.075, -1.075, -1.075]  # must match the controller block
+    r_y: [-0.23, 0.23, 0.23, -0.23]
     plant_rate: 200.0
     # 'servo' models the Dynamixel: slew toward <agent>/desired_heading at up
     # to steer_rate_max. 'unicycle' integrates the yaw-rate command instead

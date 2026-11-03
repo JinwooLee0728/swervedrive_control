@@ -13,6 +13,11 @@ int main(int argc, char* argv[]) {
     std::thread can_event_loop([&event_loop]() { event_loop.run_until_empty(); });
     rclcpp::spin(can_node);
     can_node->deinit();
+    // Every fd is deregistered now, but the loop thread stays blocked in
+    // epoll_wait (nothing wakes it), so it can't be joined. Destroying a
+    // joinable std::thread calls std::terminate -- that was the exit code -6
+    // on every CTRL-C. Detach it; process exit reclaims it.
+    can_event_loop.detach();
     rclcpp::shutdown();
     return 0;
 }

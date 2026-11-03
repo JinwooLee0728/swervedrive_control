@@ -7,6 +7,7 @@
 #include <geometry_msgs/msg/twist_stamped.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
+#include <std_msgs/msg/bool.hpp>
 #include <std_msgs/msg/float64.hpp>
 
 #include "swerve_test/dynamixel_sdk_interface.hpp"
@@ -27,6 +28,8 @@ public:
 private:
   void run();
   void swerveCallback(int index, const geometry_msgs::msg::TwistStamped::SharedPtr & msg);
+  void lockCallback(const std_msgs::msg::Bool::SharedPtr & msg);
+  bool applyLock(bool locked);
 
   std::unique_ptr<DynamixelSdkInterface> dxl_;
 
@@ -49,7 +52,17 @@ private:
   // goal positions — wheels are left wherever they physically were on boot.
   bool first_cmd_received_{false};
 
+  // Latch motor on the same bus, commanded by <ns>/dynamixel_lock (Bool).
+  // lock_id 0 disables it.
+  int lock_id_{0};
+  int32_t lock_unlocked_unit_{0};
+  int32_t lock_locked_unit_{0};
+  uint32_t lock_profile_velocity_{40};
+  bool lock_startup_pending_{false};
+  rclcpp::Time lock_last_try_{0, 0, RCL_ROS_TIME};
+
   std::array<rclcpp::Subscription<geometry_msgs::msg::TwistStamped>::SharedPtr, 2> cmd_subs_;
+  rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr lock_sub_;
   std::array<rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr, 2> heading_pubs_;
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_states_pub_;
   rclcpp::TimerBase::SharedPtr timer_;

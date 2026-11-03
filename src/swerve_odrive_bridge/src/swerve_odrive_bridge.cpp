@@ -23,6 +23,7 @@ namespace
 constexpr int kVelocityControlMode = 2;        // ODrive ControlMode::VELOCITY_CONTROL
 constexpr int kPassthroughInputMode = 1;       // ODrive InputMode::PASSTHROUGH
 constexpr uint32_t kClosedLoopControlState = 8;  // ODrive AxisState::CLOSED_LOOP_CONTROL
+constexpr uint32_t kIdleState = 1;               // ODrive AxisState::IDLE
 }  // namespace
 
 class SwerveOdriveBridge : public rclcpp::Node
@@ -40,7 +41,7 @@ public:
     declare_parameter<std::string>("odrive1_namespace", "odrive_axis0");
     declare_parameter<std::string>("odrive2_namespace", "odrive_axis1");
 
-    declare_parameter<double>("wheel_radius", 0.35);
+    declare_parameter<double>("wheel_radius", 0.035);  // 70 mm wheel
     declare_parameter<double>("drive_gear_ratio", 6.0);
     declare_parameter<double>("odrive1_sign", 1.0);
     declare_parameter<double>("odrive2_sign", 1.0);
@@ -48,6 +49,16 @@ public:
     declare_parameter<bool>("auto_arm", true);
     declare_parameter<double>("arm_timeout_sec", 5.0);
     declare_parameter<double>("publish_rate_hz", 20.0);
+    // Command watchdog: if no swerveN/cmd_vel arrives for this long, that
+    // axis's target drops to zero. Without it, a crashed or SIGKILLed
+    // upstream node (module_bridge, teleop) leaves the ODrive spinning at the
+    // last commanded speed forever, because the heartbeat keeps re-sending
+    // it. Must exceed the slowest publisher's period (module_bridge 100 Hz,
+    // swerve_keyboard ~10 Hz). <= 0 disables.
+    declare_parameter<double>("cmd_timeout_sec", 0.5);
+    // On shutdown (SIGINT/SIGTERM): send input_vel = 0, then ask both axes to
+    // go IDLE (motor de-energised).
+    declare_parameter<bool>("idle_on_shutdown", true);
 
     // Steering-drive coupling compensation. On most coaxial-gear swerve
     // modules, rotating the steering hub also rotates the drive ring,
@@ -80,6 +91,8 @@ public:
     auto_arm_ = get_parameter("auto_arm").as_bool();
     arm_timeout_sec_ = get_parameter("arm_timeout_sec").as_double();
     publish_rate_hz_ = get_parameter("publish_rate_hz").as_double();
+    cmd_timeout_sec_ = get_parameter("cmd_timeout_sec").as_double();
+    idle_on_shutdown_ = get_parameter("idle_on_shutdown").as_bool();
     steering_drive_coupling_ = get_parameter("steering_drive_coupling").as_double();
     steering_gear_ratio_ = get_parameter("steering_gear_ratio").as_double();
     const std::string steering_js_topic =
@@ -126,16 +139,56 @@ public:
     RCLCPP_INFO(get_logger(),
       "swerve_odrive_bridge: wheel_radius=%.3fm, drive_gear=%.2f, scale=%.4f rev/s per m/s, "
       "signs=[%.1f, %.1f], auto_arm=%s, publish_rate=%.1f Hz, "
-      "steering_drive_coupling=%.3f (gear=%.2f, listening on %s)",
+      "steering_drive_coupling=%.3f (gear=%.2f, listening on %s), "
+      "cmd_timeout=%.2f s, idle_on_shutdown=%s",
       wheel_radius_, drive_gear_ratio_, scale_,
       odrive_signs_[0], odrive_signs_[1], auto_arm_ ? "true" : "false",
       publish_rate_hz_, steering_drive_coupling_, steering_gear_ratio_,
-      steering_js_topic.c_str());
+      steering_js_topic.c_str(), cmd_timeout_sec_,
+      idle_on_shutdown_ ? "true" : "false");
 
     target_input_vel_[0] = 0.0f;
     target_input_vel_[1] = 0.0f;
     compensation_drive_revps_[0] = 0.0f;
     compensation_drive_revps_[1] = 0.0f;
+    last_cmd_ns_[0] = 0;   // 0 = never received -> treated as stale
+    last_cmd_ns_[1] = 0;
+  }
+
+  // Called from the context's pre-shutdown hook (SIGINT/SIGTERM or
+  // rclcpp::shutdown), while publishers/clients are still usable. Nothing can
+  // be spun here, so the IDLE request is fire-and-forget. If odrive_can_node
+  // is shutting down at the same moment (whole launch stopped), this message
+  // may be lost -- that node idles the axis itself (axis_idle_on_shutdown).
+  void stopMotors()
+  {
+    if (stopped_.exchange(true)) return;
+    if (heartbeat_timer_) heartbeat_timer_->cancel();
+    target_input_vel_[0] = 0.0f;
+    target_input_vel_[1] = 0.0f;
+    for (int k = 0; k < 3; ++k) {
+      for (int i = 0; i < 2; ++i) {
+        ControlMessage stop;
+        stop.control_mode = kVelocityControlMode;
+        stop.input_mode = kPassthroughInputMode;
+        stop.input_vel = 0.0f;
+        odrive_pubs_[i]->publish(stop);
+      }
+    }
+    int idle_sent = 0;
+    if (idle_on_shutdown_ && armed_) {
+      for (int i = 0; i < 2; ++i) {
+        if (!state_clients_[i]->service_is_ready()) continue;
+        auto req = std::make_shared<AxisState::Request>();
+        req->axis_requested_state = kIdleState;
+        state_clients_[i]->async_send_request(req);
+        ++idle_sent;
+      }
+    }
+    // Give DDS a moment to put the messages on the wire before teardown.
+    rclcpp::sleep_for(std::chrono::milliseconds(50));
+    RCLCPP_WARN(get_logger(), "shutdown: drive input_vel=0, IDLE requested on %d/2 axes",
+      idle_sent);
   }
 
   // Fully-resolved "<ns>/control_message" for axis i, for diagnostics.
@@ -215,10 +268,25 @@ public:
           "procedure_result=%u, axis_state=%u",
           i, resp->procedure_result, resp->axis_state);
         if (resp->axis_state != kClosedLoopControlState) {
+          // ODrive ProcedureResult (odrive_enums.h): 14 = NOT_CALIBRATED is
+          // the common one -- the axis lost (or never saved) its motor /
+          // encoder calibration, so CAN and node_ids are fine.
+          static const char * const kResult[] = {
+            "SUCCESS", "BUSY", "CANCELLED", "DISARMED", "NO_RESPONSE",
+            "POLE_PAIR_CPR_MISMATCH", "PHASE_RESISTANCE_OUT_OF_RANGE",
+            "PHASE_INDUCTANCE_OUT_OF_RANGE", "UNBALANCED_PHASES",
+            "INVALID_MOTOR_TYPE", "ILLEGAL_HALL_STATE", "TIMEOUT",
+            "HOMING_WITHOUT_ENDSTOP", "INVALID_STATE", "NOT_CALIBRATED",
+            "NOT_CONVERGING"};
+          const unsigned r = resp->procedure_result;
           RCLCPP_ERROR(get_logger(),
-            "axis%d did not enter CLOSED_LOOP_CONTROL (got %u). "
-            "Check ODrive errors / calibration.",
-            i, resp->axis_state);
+            "axis%d did not enter CLOSED_LOOP_CONTROL (got %u): "
+            "procedure_result=%u (%s).%s",
+            i, resp->axis_state, r,
+            r < sizeof(kResult) / sizeof(kResult[0]) ? kResult[r] : "UNKNOWN",
+            r == 14 ? " The ODrive is reachable but this axis is not "
+                      "calibrated: run motor + encoder calibration on it, set "
+                      "pre_calibrated=True and save the configuration." : "");
           return false;
         }
       }
@@ -244,6 +312,7 @@ private:
     if (!msg) return;
     target_input_vel_[i] =
       static_cast<float>(odrive_signs_[i] * msg->twist.linear.x * scale_);
+    last_cmd_ns_[i] = now().nanoseconds();
   }
 
   // Listens to /swerve_steering/joint_states. The steering node publishes
@@ -264,13 +333,30 @@ private:
 
   void publishCurrent()
   {
-    if (!armed_) return;
+    if (!armed_ || stopped_) return;
+    const int64_t t = now().nanoseconds();
     for (int i = 0; i < 2; ++i) {
+      const bool stale = cmd_timeout_sec_ > 0.0 &&
+        (last_cmd_ns_[i] == 0 || (t - last_cmd_ns_[i]) * 1e-9 > cmd_timeout_sec_);
+      if (stale) {
+        // Only warn if we were actually driving: idle-at-startup is normal.
+        if (!timed_out_[i] && target_input_vel_[i] != 0.0f) {
+          RCLCPP_WARN(get_logger(),
+            "axis%d: no cmd_vel for > %.2f s -> drive speed set to 0", i,
+            cmd_timeout_sec_);
+        }
+        timed_out_[i] = true;
+        target_input_vel_[i] = 0.0f;
+      } else if (timed_out_[i]) {
+        timed_out_[i] = false;
+      }
       ControlMessage out;
       out.control_mode = kVelocityControlMode;
       out.input_mode = kPassthroughInputMode;
       out.input_pos = 0.0f;
       out.input_torque = 0.0f;
+      // Coupling compensation is kept even when timed out: it cancels the
+      // wheel roll caused by steering motion, i.e. it holds the wheel still.
       out.input_vel = target_input_vel_[i] + compensation_drive_revps_[i];
       odrive_pubs_[i]->publish(out);
     }
@@ -283,6 +369,11 @@ private:
   bool auto_arm_;
   double arm_timeout_sec_;
   double publish_rate_hz_;
+  double cmd_timeout_sec_;
+  bool idle_on_shutdown_;
+  std::array<std::atomic<int64_t>, 2> last_cmd_ns_;
+  std::array<bool, 2> timed_out_{{false, false}};
+  std::atomic<bool> stopped_{false};
   double steering_drive_coupling_;
   double steering_gear_ratio_;
   std::atomic<bool> armed_{false};
@@ -302,6 +393,11 @@ int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
   auto node = std::make_shared<SwerveOdriveBridge>();
+  // Runs on SIGINT/SIGTERM before the context is torn down. A weak_ptr so the
+  // callback never keeps the node alive or touches a destroyed one.
+  std::weak_ptr<SwerveOdriveBridge> weak = node;
+  rclcpp::contexts::get_global_default_context()->add_pre_shutdown_callback(
+    [weak]() { if (auto n = weak.lock()) n->stopMotors(); });
   if (!node->armOdrives()) {
     // Print the RESOLVED namespaces, not a hardcoded guess. The parameters
     // are relative now, so what matters is where they land under this node's

@@ -24,3 +24,18 @@
     # Added to each module's measured heading_angle before the shortest-path
     # comparison. Use it to absorb a module mounted rotated on its hub.
     module_angle_offsets: [0.0, 0.0]
+
+    # Stepper (latch jog) serial port. "auto" = first CH340 (USB vendor 1a86)
+    # under /dev/serial/by-id, so it survives ttyUSB renumbering on reboot.
+    # "" disables the stepper; a full path forces that port.
+    stepper_port: "auto"
+
+    # q/e heading slew. The heading sent to the modules follows the q/e target
+    # at no more than max_heading_rate [rad/s]; keep it below the steering
+    # rate from profile_velocity in swerve_test/config/swerve_steering.yaml
+    # (250 -> ~1.2 rad/s), or the modules fall >90 deg behind and the
+    # shortest-path flip reverses the drive. 0 disables the limit.
+    max_heading_rate: 1.0
+    # How far [rad] the q/e target may run ahead of the sent heading. Must be
+    # < pi (capped), otherwise holding q makes the modules oscillate.
+    max_heading_lead: 0.5

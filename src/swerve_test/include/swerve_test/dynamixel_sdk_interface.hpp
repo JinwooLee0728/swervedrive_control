@@ -4,6 +4,7 @@
 #include <memory>
 #include <numbers>
 #include <string>
+#include <unordered_set>
 #include <vector>
 
 #include "dynamixel_sdk/dynamixel_sdk.h"
@@ -41,6 +42,9 @@ public:
 
   bool readOnce(States & out_states);
   bool writeGoalPositions(const std::vector<int32_t> & goals_unit);
+  // One motor that is not part of the steering bulk group. Enables torque
+  // and sets profile velocity on the first call, then writes Goal Position.
+  bool commandGoal(uint8_t id, int32_t goal_unit, uint32_t profile_velocity);
 
 private:
   void initPort();
@@ -74,6 +78,8 @@ private:
 
   uint8_t torque_enable_value_ = 1;
   uint8_t torque_disable_value_ = 0;
+
+  std::unordered_set<uint8_t> commanded_ids_;
 
   dynamixel::PortHandler * port_handler_ = nullptr;
   dynamixel::PacketHandler * packet_handler_ = nullptr;

@@ -5,8 +5,8 @@
     # Keep them the same on every robot -- the namespace does the separating.
     module_names: ["swerve1", "swerve2"]
 
-    port: "/dev/ttyUSB1"
-    baudrate: 57600
+    port: "auto"                    # find the bus where all dxl_ids answer (or set a /dev/serial/by-id path)
+    baudrate: 1000000               # servos are set to 1 Mbps (dxl_scan 2026-11-01)
     protocol_version: 2.0
 
     # ============================================================
@@ -40,7 +40,7 @@
     # XM430-W350 that limit is ~265 in the same units, so 250 is near the top.
     # If your servo cannot sustain it, lower BOTH this and w_max together.
     profile_velocity: 250.0
-    profile_acceleration: 10.0
+    profile_acceleration: 50.0     # x214.577 rev/min^2 -> ~3.7 rad/s^2 at module (5:1). Was 10.0 (~0.75 rad/s^2, ~1.6 s to reach w_max 1.2).
 
     # Steering reduction: 5 motor revolutions per 1 module revolution (5:1).
     gear_ratio: 5.0
@@ -60,3 +60,11 @@
     # and the controller doesn't move them until the keyboard publishes its
     # first cmd_vel. Set to false to use the literal zero_offset_unit above.
     assume_forward_on_startup: true
+
+    # ID 5 latch, driven by <ns>/dynamixel_lock (keyboard keys l / o).
+    # Unlocked position was read at 3184 counts. Locked is +2*pi/16 =
+    # +256 counts (22.5 deg) on a 4096-count motor. Set lock_id: 0 to disable.
+    lock_id: 5
+    lock_unlocked_unit: 3184
+    lock_locked_unit: 3440
+    lock_profile_velocity: 40

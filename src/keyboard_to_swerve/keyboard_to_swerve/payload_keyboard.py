@@ -45,10 +45,24 @@ in the payload BODY frame: "w" always means "payload +x".
 SAFETY BEHAVIOUR
 ----------------
 - Twist is scaled uniformly (preserving the ICR) so no module exceeds v_max.
-- Shortest-path pi-flip per module, against the last commanded heading (not
-  the measured one, so a heading near +-90 deg does not chatter).
+- No pi-flip: every module points along its direction of travel and its wheel
+  speed is never negative. A direction change of up to 180 deg is done by
+  steering (wheels held still meanwhile, see `align_window`), never by
+  reversing the wheel.
+- Each module's commanded heading slews toward its target at no more than
+  `max_heading_rate`, so a key press cannot jump the command 90 deg ahead of a
+  servo that turns at ~1.2 rad/s.
+- The twist actually sent ramps toward the keyboard twist at `max_accel`
+  (per-module velocity vector, m/s^2), so a new direction is reached by
+  sweeping each wheel's velocity across, not by reversing its spin. The stop
+  key and quitting bypass the ramp.
+- While a commanded heading slews, all wheels are held back until every moving
+  module is within `align_window` of its target heading (smoothly to full speed
+  at 0), so a turning wheel never drives along its old axis.
 - All wheel speeds are scaled by ONE factor exp(-gain * e_max), where e_max is
-  the largest measured module heading error; above `heading_error_stop` all
+  the largest error between a module's measured heading and its TARGET
+  heading (not the slewed command, which the wheel tracks closely; the
+  bridge's own attenuation only sees that small lag); above `heading_error_stop` all
   wheels stop. Scaling all modules together keeps the motion rigid while the
   steering slews, instead of letting one module push while another is still
   turning.
@@ -72,6 +86,7 @@ import rclpy
 import yaml
 from geometry_msgs.msg import PoseStamped, Twist
 from rclpy.executors import SingleThreadedExecutor
+from rclpy.parameter import Parameter
 from rclpy.qos import qos_profile_sensor_data
 from std_msgs.msg import Float64
 
@@ -133,6 +148,21 @@ class PayloadTeleop:
         cfg_path = str(p('config', '').value) or default_hardware_config()
         (self.agents, self.r_x, self.r_y, self.v_mod_max,
          payload) = load_controller_block(cfg_path)
+        # Optional subset of agents to drive, e.g. agents:="[module1, module2]"
+        # to teleop robot 1 alone while robot 2 is offline. Unlisted modules
+        # get no commands (their bridge's cmd_timeout stops them if they come
+        # up) and are left out of the feedback check and the steering-error
+        # gate. Default (unset) = every agent in hardware.yaml.
+        only = p('agents', Parameter.Type.STRING_ARRAY).value
+        if only:
+            unknown = [a for a in only if a not in self.agents]
+            if unknown:
+                raise ValueError(f'agents {unknown} not in hardware.yaml '
+                                 f'robot_names {self.agents}')
+            keep = [i for i, a in enumerate(self.agents) if a in only]
+            self.agents = [self.agents[i] for i in keep]
+            self.r_x = [self.r_x[i] for i in keep]
+            self.r_y = [self.r_y[i] for i in keep]
         self.n = len(self.agents)
 
         self.payload_topic = str(p('payload_topic', f'/{payload}/pose').value)
@@ -145,6 +175,24 @@ class PayloadTeleop:
         # heading_error_stop, but applied to all modules at once.
         self.gain = float(p('heading_error_gain', 7.0).value)
         self.err_stop = float(p('heading_error_stop', 0.5).value)
+        # Max slew rate of each module's COMMANDED heading [rad/s]. One key
+        # press can swing a module's target by 10+ deg at low speed, i.e.
+        # several rad/s under key repeat -- far faster than the servos. Keep
+        # this below the REAL steering rate: profile_velocity 250 predicts ~1.2
+        # rad/s at the module, but robot1 measured 0.90-0.95 rad/s under load
+        # (2026-11-03), so 0.8 keeps a margin and the wheel stays with the
+        # command. 0 disables.
+        self.max_heading_rate = float(p('max_heading_rate', 0.8).value)
+        # Max rate of change of any module's velocity VECTOR [m/s^2]. The key
+        # presses set a target twist; the twist actually sent ramps toward it,
+        # so a new direction is reached gradually rather than by reversing a
+        # wheel. The `s`/space stop and quitting bypass the ramp. 0 disables.
+        self.max_accel = float(p('max_accel', 0.15).value)
+        # While headings slew, wheel speed is 0 when any module's commanded
+        # heading is more than this [rad] from its target, rising smoothly to
+        # full speed at 0 (see _step). 0 disables (drive full speed along the
+        # slewing heading).
+        self.align_window = float(p('align_window', 0.5).value)
 
         r_max = max(math.hypot(x, y) for x, y in zip(self.r_x, self.r_y))
         self.v_max = self.v_mod_max
@@ -152,8 +200,11 @@ class PayloadTeleop:
 
         # --- state (guarded by lock: keyboard thread vs. timer) -----------
         self.lock = threading.Lock()
-        self.vx = self.vy = self.wz = 0.0
-        self.head_cmd = [None] * self.n      # payload-frame commanded heading
+        self.vx = self.vy = self.wz = 0.0    # keyboard target twist
+        self.ramp_vx = self.ramp_vy = self.ramp_wz = 0.0   # twist actually sent
+        self.head_cmd = [None] * self.n      # payload-frame commanded heading (slewed)
+        self.head_tgt = [None] * self.n      # payload-frame target heading (= direction of travel)
+        self.last_step_time = None
         self.head_meas = [None] * self.n     # WORLD-frame measured heading
         self.payload_yaw = 0.0
         self.last_pose_time = None
@@ -239,7 +290,37 @@ class PayloadTeleop:
             m.pose.orientation.w = 1.0
             self.pub_pose.publish(m)
 
-        targets = self._module_targets(vx, vy, wz)
+        # Time step for this tick (timer jitter / stalls capped).
+        if self.last_step_time is None:
+            dt = 1.0 / self.rate_hz
+        else:
+            dt = min((now - self.last_step_time).nanoseconds * 1e-9,
+                     5.0 / self.rate_hz)
+        self.last_step_time = now
+
+        # Ramp the commanded twist toward the keyboard twist. The step is one
+        # straight line in twist space, scaled so no module's velocity vector
+        # changes faster than max_accel. Module velocities are linear in the
+        # twist, so every wheel's velocity vector also moves along a straight
+        # line: a change of travel direction sweeps the direction across
+        # instead of flipping the wheel's spin, and every module stays on the
+        # same ICR throughout.
+        # Under the lock: the stop key resets the ramp from the keyboard thread.
+        with self.lock:
+            vx, vy, wz = self.vx, self.vy, self.wz
+            dvx, dvy, dwz = (vx - self.ramp_vx, vy - self.ramp_vy,
+                             wz - self.ramp_wz)
+            dv_mod = max(math.hypot(dvx - dwz * ry, dvy + dwz * rx)
+                         for rx, ry in zip(self.r_x, self.r_y))
+            k = 1.0
+            if self.max_accel > 0.0 and dv_mod > self.max_accel * dt:
+                k = self.max_accel * dt / dv_mod
+            self.ramp_vx += k * dvx
+            self.ramp_vy += k * dvy
+            self.ramp_wz += k * dwz
+            rvx, rvy, rwz = self.ramp_vx, self.ramp_vy, self.ramp_wz
+
+        targets = self._module_targets(rvx, rvy, rwz)
 
         # Uniform saturation: keeps the ICR, unlike per-wheel clamping.
         s_max = max(s for s, _ in targets)
@@ -247,18 +328,51 @@ class PayloadTeleop:
             k = self.v_mod_max / s_max
             targets = [(s * k, h) for s, h in targets]
 
+        max_step = (self.max_heading_rate * dt if self.max_heading_rate > 0.0
+                    else math.inf)
+
         speeds = []
         for i, (s, h) in enumerate(targets):
-            ref = self.head_cmd[i]
-            if ref is None and meas[i] is not None:
-                ref = wrap(meas[i] - yaw)
+            m_pf = wrap(meas[i] - yaw) if meas[i] is not None else None
+            if self.head_cmd[i] is None:
+                # First tick: start from where the wheel actually points.
+                self.head_cmd[i] = m_pf
             if h is None:
                 # No motion for this module: hold the heading it already has.
-                h, s = (ref if ref is not None else 0.0), 0.0
-            elif ref is not None and abs(wrap(h - ref)) > math.pi / 2.0:
-                h, s = wrap(h + math.pi), -s
-            self.head_cmd[i] = h
+                h = self.head_cmd[i] if self.head_cmd[i] is not None else 0.0
+                s = 0.0
+            # No pi-flip: the module always points along its direction of
+            # travel and the wheel speed is never negative (s = |v_k| >= 0).
+            self.head_tgt[i] = h
+
+            # Slew the commanded heading toward the target, shortest way.
+            cur = self.head_cmd[i] if self.head_cmd[i] is not None else h
+            d = wrap(h - cur)
+            self.head_cmd[i] = wrap(cur + max(-max_step, min(max_step, d)))
             speeds.append(s)
+
+        # While a commanded heading is still slewing toward its target, hold
+        # the wheels back: speed is 0 if any moving module is more than
+        # align_window from its target, rising with cos(gap) to full speed at
+        # gap 0. Without this a wheel turning to a new direction keeps
+        # rolling along its old axis -- the wrong way -- which is
+        # the "direction switch". One factor for all modules (the smallest),
+        # like the steering-error gate, so the motion stays rigid. The gap is
+        # the LARGER of target vs. slewed command and target vs. MEASURED
+        # module heading: the servo can fall behind the command (robot1 steers
+        # at ~0.9 rad/s under load), and the wheel must wait for the real
+        # wheel, not just for the command.
+        align = 1.0
+        if self.align_window > 0.0:
+            c_w = math.cos(min(self.align_window, math.pi / 2.0))
+            for i, s in enumerate(speeds):
+                if abs(s) > 1e-9:
+                    gap = abs(wrap(self.head_tgt[i] - self.head_cmd[i]))
+                    if meas[i] is not None:
+                        gap = max(gap, abs(wrap(self.head_tgt[i]
+                                                - wrap(meas[i] - yaw))))
+                    c = math.cos(gap)
+                    align = min(align, max(0.0, min(1.0, (c - c_w) / (1.0 - c_w))))
 
         # Gate ALL wheels on the worst steering error (rigid-consistent).
         if self.pose_conflict:
@@ -278,14 +392,18 @@ class PayloadTeleop:
             if self.warned in ('nofb', 'pose', 'conflict'):
                 self.node.get_logger().info('feedback live.')
                 self.warned = None
-            e_max = max(abs(wrap(meas[i] - yaw - self.head_cmd[i]))
+            # Error against the TARGET heading, not the slewed command: the
+            # wheel tracks the slewed command closely, so measuring against it
+            # (or relying on the bridge, which only sees the slewed command)
+            # would hide how far the wheel still is from where it must point.
+            e_max = max(abs(wrap(meas[i] - yaw - self.head_tgt[i]))
                         for i in range(self.n))
             att = 0.0 if e_max >= self.err_stop else math.exp(-self.gain * e_max)
-        self.scale_info = (e_max, att)
+        self.scale_info = (e_max, att * align)   # gain shown = both factors
 
         for i in range(self.n):
             t = Twist()
-            t.linear.x = float(speeds[i] * att)
+            t.linear.x = float(speeds[i] * att * align)
             self.pub_cmd[i].publish(t)
             self.pub_head[i].publish(Float64(data=float(wrap(self.head_cmd[i] + yaw))))
 
@@ -293,6 +411,7 @@ class PayloadTeleop:
         """Zero wheel speed at the last headings (called on exit)."""
         with self.lock:
             self.vx = self.vy = self.wz = 0.0
+            self.ramp_vx = self.ramp_vy = self.ramp_wz = 0.0   # no ramp on quit
         for _ in range(5):
             self._step()
 
@@ -316,7 +435,10 @@ class PayloadTeleop:
             elif key == 'e':
                 self._bump('wz', -self.ang_step, self.w_max)
             elif key in (' ', 's'):
+                # Stop is immediate: the ramp is for direction changes, not
+                # for the stop key.
                 self.vx = self.vy = self.wz = 0.0
+                self.ramp_vx = self.ramp_vy = self.ramp_wz = 0.0
             else:
                 return False
         return True

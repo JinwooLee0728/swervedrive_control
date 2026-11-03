@@ -120,6 +120,12 @@ class ModuleBridge(Node):
         self.gamma_v = float(p('attenuate_on_heading_error', 7.0).value)
         # Above this heading error the wheel is stopped outright [rad].
         self.heading_error_stop = float(p('heading_error_stop', 1.2).value)
+        # Multiplies every outgoing wheel speed for this robot (steer angle is
+        # untouched). -1.0 reverses all of this robot's module velocities.
+        self.wheel_speed_sign = float(p('wheel_speed_sign', 1.0).value)
+        if self.wheel_speed_sign not in (1.0, -1.0):
+            raise ValueError(
+                f'wheel_speed_sign must be 1.0 or -1.0, got {self.wheel_speed_sign}')
 
         # On hardware this node is the only source of <agent>/pose, so it must
         # publish it. In SIMULATION the kinematic plant owns the true module
@@ -289,7 +295,7 @@ class ModuleBridge(Node):
             m = TwistStamped()
             m.header.stamp = self.get_clock().now().to_msg()
             m.header.frame_id = self.module_names[i]
-            m.twist.linear.x = float(v)      # wheel speed [m/s]
+            m.twist.linear.x = float(self.wheel_speed_sign * v)  # wheel speed [m/s]
             m.twist.angular.y = float(phi)   # steer angle [rad], chassis frame
             self.pub_steer[i].publish(m)
 

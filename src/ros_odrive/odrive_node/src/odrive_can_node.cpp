@@ -60,16 +60,31 @@ ODriveCanNode::ODriveCanNode(const std::string& node_name) : rclcpp::Node(node_n
 }
 
 void ODriveCanNode::deinit() {
+    // Stop listening first so no queued ROS command can re-send a velocity
+    // after the stop frames below.
+    sub_evt_.deinit();
+    srv_evt_.deinit();
+    srv_clear_errors_evt_.deinit();
+
     if (axis_idle_on_shutdown_) {
+        // Zero the velocity setpoint first: if the IDLE request is refused,
+        // the axis at least stops instead of holding the last speed.
         struct can_frame frame = {};
+        frame.can_id = node_id_ << 5 | CmdId::kSetInputVel;
+        write_le<float>(0.0f, frame.data);
+        write_le<float>(0.0f, frame.data + 4);
+        frame.can_dlc = 8;
+        can_intf_.send_can_frame(frame);
+
+        frame = can_frame{};
         frame.can_id = node_id_ << 5 | CmdId::kSetAxisState;
         write_le<uint32_t>(ODriveAxisState::AXIS_STATE_IDLE, frame.data);
         frame.can_dlc = 4;
         can_intf_.send_can_frame(frame);
+        RCLCPP_INFO(rclcpp::Node::get_logger(),
+                    "shutdown: input_vel=0 and IDLE sent to node_id %d", node_id_);
     }
 
-    sub_evt_.deinit();
-    srv_evt_.deinit();
     can_intf_.deinit();
 }
 
