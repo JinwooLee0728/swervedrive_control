@@ -298,7 +298,7 @@ conversion and the speed clamp.
 |---|---|---|
 | `config` | `swerve_cooptrans_bridge/config/hardware.yaml` | where the geometry is read from |
 | `use_external_pose` | `false` | read `/payload/pose` instead of publishing an identity pose |
-| `lin_step` / `ang_step` | 0.01 m/s / 0.05 rad/s | change per key press |
+| `lin_step` / `ang_step` | 0.01 m/s / 0.01 rad/s | change per key press |
 | `heading_error_gain` | 7.0 | wheel gain `exp(−gain·e_max)` while steering |
 | `heading_error_stop` | 0.5 rad | above this steering error, all wheels stop |
 | `max_heading_rate` | 0.8 rad/s | max slew of each module's commanded heading; keep below the REAL steering rate (robot1 measured 0.90–0.95 rad/s under load, although `profile_velocity` 250 predicts ~1.2). 0 disables |

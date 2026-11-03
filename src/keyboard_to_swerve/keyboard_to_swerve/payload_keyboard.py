@@ -170,7 +170,7 @@ class PayloadTeleop:
         self.rate_hz = float(p('rate_hz', 50.0).value)
         self.pose_timeout = float(p('pose_timeout', 0.5).value)
         self.lin_step = float(p('lin_step', 0.01).value)
-        self.ang_step = float(p('ang_step', 0.05).value)
+        self.ang_step = float(p('ang_step', 0.01).value)
         # Same meaning as the bridge's attenuate_on_heading_error /
         # heading_error_stop, but applied to all modules at once.
         self.gain = float(p('heading_error_gain', 7.0).value)
