@@ -158,8 +158,8 @@ lidar_pose_adapter:
     cmd_timeout: 0.2
     pose_timeout: 0.5
     wheel_speed_max: 0.5
-    attenuate_on_heading_error: 7.0
-    heading_error_stop: 1.2
+    attenuate_on_heading_error: 0.0  # 0.0 disables (was 7.0)
+    heading_error_stop: 3.2  # > pi: never stops (was 1.2)
     publish_module_pose: false
 
 /robot2/swerve_cooptrans_bridge:
@@ -176,8 +176,8 @@ lidar_pose_adapter:
     cmd_timeout: 0.2
     pose_timeout: 0.5
     wheel_speed_max: 0.5
-    attenuate_on_heading_error: 7.0
-    heading_error_stop: 1.2
+    attenuate_on_heading_error: 0.0  # 0.0 disables (was 7.0)
+    heading_error_stop: 3.2  # > pi: never stops (was 1.2)
     publish_module_pose: false
 
 

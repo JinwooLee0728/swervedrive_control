@@ -90,7 +90,7 @@ controller:
       # gamma_v / k_theta / beta_theta / sgn_smooth are UNUSED when
       # direct_steering is true. Kept so the published cascade can be
       # reproduced by flipping the flag.
-      gamma_v: 7.0
+      gamma_v: 0.0
       k_theta: 15.0
       beta_theta: 0.2
       sgn_smooth: 0.03

@@ -119,9 +119,9 @@ class ModuleBridge(Node):
         # module heading lags theta_d. 0.0 disables. The controller no longer
         # does this (direct steering assumes e_theta ~= 0), so this is the only
         # thing standing between a too-slow servo and commanded slip.
-        self.gamma_v = float(p('attenuate_on_heading_error', 7.0).value)
+        self.gamma_v = float(p('attenuate_on_heading_error', 0.0).value)
         # Above this heading error the wheel is stopped outright [rad].
-        self.heading_error_stop = float(p('heading_error_stop', 1.2).value)
+        self.heading_error_stop = float(p('heading_error_stop', 3.2).value)
         # Multiplies every outgoing wheel speed for this robot (steer angle is
         # untouched). -1.0 reverses all of this robot's module velocities.
         self.wheel_speed_sign = float(p('wheel_speed_sign', 1.0).value)

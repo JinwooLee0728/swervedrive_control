@@ -176,8 +176,8 @@ class PayloadTeleop:
         self.ang_step = float(p('ang_step', 0.01).value)
         # Same meaning as the bridge's attenuate_on_heading_error /
         # heading_error_stop, but applied to all modules at once.
-        self.gain = float(p('heading_error_gain', 7.0).value)
-        self.err_stop = float(p('heading_error_stop', 0.5).value)
+        self.gain = float(p('heading_error_gain', 0.0).value)
+        self.err_stop = float(p('heading_error_stop', 3.2).value)
         # Max slew rate of each module's COMMANDED heading [rad/s]. One key
         # press can swing a module's target by 10+ deg at low speed, i.e.
         # several rad/s under key repeat -- far faster than the servos. Keep
@@ -195,7 +195,7 @@ class PayloadTeleop:
         # heading is more than this [rad] from its target, rising smoothly to
         # full speed at 0 (see _step). 0 disables (drive full speed along the
         # slewing heading).
-        self.align_window = float(p('align_window', 0.5).value)
+        self.align_window = float(p('align_window', 0.0).value)
         # Eq. (8) branch hysteresis [rad], same as proposed.branch_hysteresis
         # in the controller: keep the current heading branch unless the other
         # is nearer the measured heading by more than this. 0 = eq. 8 exactly.
